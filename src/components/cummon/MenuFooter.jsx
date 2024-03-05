@@ -72,7 +72,7 @@ function MenuFooter(props) {
               className={`btnNavMenu ${
                 pathname === "/website" ? "active" : ""
               }`}
-              onClick={() => (window.location.href = "https://tnosworld.com/")}
+              onClick={() => (window.location.href = "https://tnos.co.id")}
             >
               {pathname === "/website" ? (
                 <img className="img-menu-footer-s" src={websiteActive} alt="" />
