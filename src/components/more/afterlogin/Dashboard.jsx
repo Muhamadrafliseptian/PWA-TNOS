@@ -4,6 +4,7 @@ import PaddingPwa from "../../moleculars/PaddingPwa";
 import legalitas from "../../../assets/images/new pwa icon/dashboard/iconLegalitas.svg";
 import pengamanan from "../../../assets/images/new pwa icon/dashboard/iconPengamananUsaha.svg";
 import comprehensive from "../../../assets/images/new pwa icon/dashboard/iconComprehensive.svg";
+import lainnya from "../../../assets/images/new pwa icon/dashboard/iconPembayaranLainnya.png";
 import NavigateButtomNew from "../../moleculars/NavigateButtomNew";
 import Gap from "../../moleculars/Gap";
 import TitleHeader from "../../utils/TitleHeader";
@@ -80,7 +81,7 @@ function Dashboard() {
                           onClick={() => navigate("/pembayaran-lainnya")}
                         >
                           <div className="card-dashboard-fkf">
-                            <img src={legalitas} alt="" />
+                            <img src={lainnya} alt="" />
                           </div>
                           <div className="title">{t("Pembayaran Lainnya")}</div>
                         </div>
