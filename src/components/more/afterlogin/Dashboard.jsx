@@ -35,8 +35,7 @@ function Dashboard() {
             </div>
             <div className="dashboard-container-f">
               <PaddingPwa padding={15}>
-                <div className="content-dashboard-fkdw d-block">
-                  <center>
+              <center>
                     <div className="row">
                     <div className="col-md-6">
                         <div
@@ -81,14 +80,13 @@ function Dashboard() {
                           onClick={() => navigate("/pembayaran-lainnya")}
                         >
                           <div className="card-dashboard-fkf">
-                            <img src={lainnya} alt="" />
+                            <img src={lainnya} alt="" style={{width: '69px'}} />
                           </div>
                           <div className="title">{t("Pembayaran Lainnya")}</div>
                         </div>
                       </div>
                     </div>
                   </center>
-                </div>
               </PaddingPwa>
               <Gap height={70} />
               <NavigateButtomNew />

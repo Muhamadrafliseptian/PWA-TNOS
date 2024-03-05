@@ -38,7 +38,10 @@ function NavigateButtomNew({ messageCount }) {
             </div>
             <div className="name-nav">{t("menu2")}</div>
           </div>
-          <div className="btn-navigate-item">
+          <div 
+            className="btn-navigate-item"
+            onClick={() => window.open("https://tnos.co.id", "_blank")}
+            >
             <div className="image-icon-nav">
               <img src={website} alt="" />
             </div>
