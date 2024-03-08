@@ -4,6 +4,7 @@ import legalitas_lainnya from "../../assets/images/new pwa icon/riwayat/legalita
 import pengamanan from "../../assets/images/new pwa icon/riwayat/pengamanan.svg";
 import PAS from "../../assets/images/TRIGGER.svg";
 import TRIGER from "../../assets/images/PAS.svg"
+import Lainnya from "../../assets/images/new pwa icon/dashboard/iconPembayaranLainnya.png"
 
 const icon = (layanan) => {
   // console.log(layanan);
@@ -26,6 +27,8 @@ const icon = (layanan) => {
       return PAS;
     case t("Triger_Pengamanan_Bisnis"):
       return TRIGER
+    case t("Pembayaran Lainnya"):
+      return Lainnya
     default:
       return;
   }
