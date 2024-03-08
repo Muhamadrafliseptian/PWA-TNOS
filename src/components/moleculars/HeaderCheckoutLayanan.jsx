@@ -4,32 +4,50 @@ import { icon } from "../utils/IconLayananService";
 import { t } from "i18next";
 import PAS from "../../assets/images/TRIGGER.svg";
 import Trigger from "../../assets/images/PAS.svg";
+import Lainnya from "../../assets/images/new pwa icon/dashboard/iconPembayaranLainnya.png"
 function HeaderCheckoutLayanan({ layanan, payment_status }) {
   // console.log(payment_status);
   const renderStatusOrder = () => {
+    console.log("Status : " + payment_status)
     switch (payment_status) {
-      case "002":
+      case "RUN":
         return (
           <ContentTitleValue
             type="waiting"
             title="Status Order:"
-            value={t("status_order2")}
+            value="Sedang Diproses"
           />
         );
-      case "011":
+      case "WAIT":
         return (
           <ContentTitleValue
-            type="cancel"
+            type="waiting"
             title="Status Order:"
-            value={t("status_order4")}
+            value="Menunggu Pembayaran"
+          />
+        );
+      case "START":
+        return (
+          <ContentTitleValue
+            type="success"
+            title="Status Order:"
+            value="Siap Bertugas"
+          />
+        );
+      case "FINISH":
+        return (
+          <ContentTitleValue
+            type="success"
+            title="Status Order:"
+            value="Selesai"
           />
         );
       default:
         return (
           <ContentTitleValue
-            type="cart"
+            type="waiting"
             title="Status Order:"
-            value={t("status_order1")}
+            value="Memesan"
           />
         );
     }
@@ -53,9 +71,9 @@ function HeaderCheckoutLayanan({ layanan, payment_status }) {
         </>:
         layanan === "Pembayaran Lainnya" ? 
         <>
-          <img src={PAS} alt="not internet connection" />
+          <img src={Lainnya} alt="not internet connection" style={{width: '50px'}} />
           <div className="content-detail">
-            <div className="title-f" style={{ fontWeight: 'bold' }} >PAS</div>
+            <div className="title-f" style={{ fontWeight: 'bold' }} >Pembayaran Lainnya</div>
           </div> 
         </>: 
         <>

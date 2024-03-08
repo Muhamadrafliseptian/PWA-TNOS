@@ -112,13 +112,10 @@ function AkunUser() {
                   </div>
                   <div className="title">{t("account4")}</div>
                 </div>
-                <div className="menu-akun-f-fwd">
-                  <div className="icon-jf">
-                    <img src={rate} alt="" />
-                  </div>
-                  <div className="title">{t("account5")}</div>
-                </div>
-                <div className="menu-akun-f-fwd">
+                <div 
+                  className="menu-akun-f-fwd"
+                  onClick={() => window.open("https://api.whatsapp.com/send?phone=08119595493&text=Hallo admin, saya ingin mengetahui informasi lebih lanjut mengenai pengamanan event", "_blank")}
+                >
                   <div className="icon-jf">
                     <img src={chat} alt="" />
                   </div>

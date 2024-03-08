@@ -1019,13 +1019,19 @@ function ContentDetailCheckout({ layanan, data }) {
                   <div className="image-detail-checkout-f">
                     <div className="title"></div>
                     {data?.file_document &&
-                      JSON.parse(data?.file_document)?.map((file, key) => (
-                        <img
-                          key={key}
-                          src={file.image_url}
-                          alt={file.image_name}
-                        />
-                      ))}
+                      JSON.parse(data?.file_document)?.map((file, key) => {
+                        if (file?.mime == "application/pdf") {
+                          <i>
+                            Hamdan
+                          </i>
+                        } else {
+                          <img
+                            key={key}
+                            src={file.image_url}
+                            alt={file.mime}
+                          />
+                        }
+                      })}
                   </div>
                 }
               />

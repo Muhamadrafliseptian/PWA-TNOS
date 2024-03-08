@@ -58,6 +58,7 @@ function RiwayatTransaksi() {
       renderData = !layananId
         ? list_history_by_user &&
           list_history_by_user?.map((row, key) => {
+            const width = row?.tnos_service_id == 3 && row?.tnos_subservice_id == 8 ? { width: '55px' } : {width: ''};
             return (
               <div
                 key={key}
@@ -72,6 +73,7 @@ function RiwayatTransaksi() {
                     )
                   )}
                   alt=""
+                  style={width}
                 />
                 <div className="container-info-s">
                   <ContentTitleValue
@@ -88,7 +90,7 @@ function RiwayatTransaksi() {
                     value={getStatusPayment(row.payment_status)}
                   />
                   <ContentTitleValue
-                    type="order"
+                    type={row.status_order == "WAIT" ? 'menunggu' : row.status_order == "RUN" ? "waiting" : "success" }
                     title={`${t("history9")}:`}
                     value={getStatusOrder(row.status_order)}
                   />
