@@ -10,6 +10,13 @@ function ContentTitleValue({ title, value, type }) {
             <div className="value order">{value}</div>
           </div>
         );
+      case "menunggu":
+        return (
+          <div className="info-s">
+            <div className="title">{title}</div>
+            <div className="value order" style={{backgroundColor: 'yellow'}}>{value}</div>
+          </div>
+        );
       case "cart":
         return (
           <div className="info-s">
