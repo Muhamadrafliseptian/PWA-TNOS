@@ -68,14 +68,28 @@ const getTypeStatusPayment = (payment_status) => {
 
 const getStatusOrder = (status_order) => {
   let name = "";
-  if (status_order === "001") {
-    name = t("status_order1");
-  } else if (status_order === "002") {
-    name = t("status_order2");
-  } else if (status_order === "010") {
-    name = t("status_order3");
+  if (status_order === "WAIT") {
+    name = "Menunggu Pembayaran"
+  } else if (status_order === "RUN") {
+    name = "Sedang Diproses"
+  } else if (status_order === "START") {
+    name = "Siap Bertugas"
+  } else if (status_order === "AKTA") {
+    name = "Proses Pembuatan Akta"
+  } else if (status_order === "SKMENKUMHAM") {
+    name = "Proses SKMENKUMHAM"
+  } else if (status_order === "NPWP") {
+    name = "Proses NPWP"
+  } else if (status_order === "NIB") {
+    name = "Proses NIB"
+  } else if (status_order === "WORK") {
+    name = "Sedang Bertugas"
+  } else if (status_order === "FINISH") {
+    name = "Selesai"
+  } else if (status_order === "WORK") {
+    name = "Sedang Bertugas"
   } else {
-    name = t("status_order4");
+    name = "Gagal"
   }
   return name;
 };
