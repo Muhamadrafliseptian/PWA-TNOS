@@ -535,7 +535,7 @@ function AppRoutes() {
         }
       />
       <Route
-        path="/security-providers-m"
+        path="/pengamanan-corporate-m"
         element={
           <ProtectedRoute>
             <ListPengamananProviderMobile/>

@@ -126,7 +126,7 @@ function TopNewNav({ title, path, nav = true, type, background }) {
           <div className="outside-container">
             <div className="container-nav-top-f">
               <div className="nav-button-f">
-                {location.pathname === "/security-providers-m" || location.pathname.startsWith("/services-list-m/") || location.pathname.startsWith("/corporate-security-m/") ? '' : nav && <FaArrowLeft onClick={() => navigate(path)} /> }
+                {location.pathname === "/pengamanan-corporate-m" || location.pathname.startsWith("/services-list-m/") || location.pathname.startsWith("/corporate-security-m/") ? '' : nav && <FaArrowLeft onClick={() => navigate(path)} /> }
                 <div>{title}</div>
               </div>
             </div>

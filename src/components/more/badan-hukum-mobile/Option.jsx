@@ -13,6 +13,7 @@ var CryptoJS = require("crypto-js");
 const secretKey = `${process.env.REACT_APP_SECRET_KEY}`;
 
 function OptionMobile() {
+  const [getP, setP] = useState(null);
   TitleHeader("Halaman pilihan");
   const navigate = useNavigate();
   const [user, setUser] = useState("");
@@ -47,6 +48,7 @@ function OptionMobile() {
           var paramValue = JSON.parse(info2x);
           console.log(paramValue);
           setUser(paramValue);
+          setP(checkP.query)
           localStorage.setItem("data", JSON.stringify(paramValue));
         }
         if (!localStorage.getItem("data")) {
@@ -68,7 +70,7 @@ function OptionMobile() {
                 <div className="card-option">
                   <div
                     className="card-option_img"
-                    onClick={() => navigate("/badan-usaha-pt-m")}
+                    onClick={() => navigate(`/badan-usaha-pt-m/?query=${getP}`)}
                   >
                     <img src={pt} alt="" />
                   </div>
@@ -141,7 +143,7 @@ function OptionMobile() {
                 <div className="card-option">
                   <div
                     className="card-option_img"
-                    onClick={() => navigate("/badan-usaha-cv-m")}
+                    onClick={() => navigate(`/badan-usaha-cv-m/?query=${getP}`)}
                   >
                     <img src={cv} alt="" />
                   </div>
@@ -165,7 +167,7 @@ function OptionMobile() {
                 <div className="card-option">
                   <div
                     className="card-option_img"
-                    onClick={() => navigate("/badan-usaha-yayasan-m")}
+                    onClick={() => navigate(`/badan-usaha-yayasan-m/?query=${getP}`)}
                   >
                     <img src={yayasan} alt="" />
                   </div>
@@ -186,7 +188,7 @@ function OptionMobile() {
                 <div className="card-option">
                   <div
                     className="card-option_img"
-                    onClick={() => navigate("/badan-usaha-perkumpulan-m")}
+                    onClick={() => navigate(`/badan-usaha-perkumpulan-m/?query=${getP}`)}
                   >
                     <img src={perkumpulan} alt="" />
                   </div>
@@ -207,7 +209,7 @@ function OptionMobile() {
                 <div className="card-option">
                   <div
                     className="card-option_img"
-                    onClick={() => navigate("/badan-usaha-lainnya-m")}
+                    onClick={() => navigate(`/badan-usaha-lainnya-m/?query=${getP}`)}
                   >
                     <img src={lainnya} alt="" />
                   </div>
