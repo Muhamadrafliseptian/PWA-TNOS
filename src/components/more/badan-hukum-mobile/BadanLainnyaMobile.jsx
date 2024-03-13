@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../../assets/css/allLayanan.css";
 import Gap from "../../moleculars/Gap";
 import LabelComponent from "../../atoms/LabelComponent";
@@ -12,10 +12,12 @@ import { useDropzone } from "react-dropzone";
 import iconFileInput from "../../../assets/images/new pwa icon/inputFile/inputFileIcon.svg";
 import fileUploadIcon from "../../../assets/images/new pwa icon/inputFile/file-upload.svg";
 import { useDispatch } from "react-redux";
-import { badanHukumCreate } from "../../../redux/action/paymentAction";
+import { badanHukumCreate, getAgent } from "../../../redux/action/paymentAction";
 import { showMessage } from "../../utils/Message";
 import TitleHeader from "../../utils/TitleHeader";
 import InputCheckboxComponent from "../../atoms/InputCheckboxComponent";
+import InputSelectComponent from "../../atoms/InputSelectComponent";
+import { useSelector } from "react-redux";
 
 function BadanLainnyaMobile() {
   TitleHeader("Halaman Lainnya");
@@ -39,6 +41,9 @@ function BadanLainnyaMobile() {
   });
 
   const dispatch = useDispatch();
+  const storeData = useSelector((store) => store?.global);
+  const { agent } = storeData;
+
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -48,6 +53,7 @@ function BadanLainnyaMobile() {
       tnos_subservice_id: "6",
       harga_total: 0,
       needs: "",
+      partner: "",
       user_id: user?.user_id,
       name: user?.name,
       email: user?.email,
@@ -68,11 +74,26 @@ function BadanLainnyaMobile() {
     validationSchema: lainnyaSchema,
   });
 
+  useEffect(() => {
+    fetchAgent();
+  }, []);
+
+  const fetchAgent = async () => {
+    dispatch(await getAgent());
+  };
+
   const files = acceptedFiles.map((file) => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
     </li>
   ));
+
+  const agentConvert = agent?.map((row) => {
+    return {
+      value: row?.id,
+      label: `${row?.code} - ${row?.name}`,
+    };
+  });
 
   return (
     <>
@@ -129,6 +150,22 @@ function BadanLainnyaMobile() {
                   </div>
 
                   <form action="">
+                    <div className="form-group mb-2">
+                      <LabelComponent label="Nama Partners" />
+                      <InputSelectComponent
+                        options={agentConvert}
+                        onChange={formik.setFieldValue}
+                        onBlur={formik.setFieldTouched}
+                        value={formik.values.partner.value}
+                        id="partner"
+                      />
+
+                      {formik.errors.partner && formik.touched.partner ? (
+                        <TextError error={formik.errors.partner} />
+                      ) : (
+                        ""
+                      )}
+                    </div>
                     <div className="form-group mb-2">
                       <LabelComponent label="Dokumen Tambahan (Opsional)" />
                       <div {...getRootProps({ className: "form-payment" })}>

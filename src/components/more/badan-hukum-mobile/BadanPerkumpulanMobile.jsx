@@ -20,6 +20,7 @@ import {
   getKecamatan,
   getKelurahan,
   getProvinsi,
+  getAgent
 } from "../../../redux/action/paymentAction";
 import InputSelectSearchComponent from "../../atoms/InputSelectSearchComponent";
 import InputCreatetableSelectComponent from "../../atoms/InputCreatetableSelectComponent";
@@ -28,6 +29,7 @@ import TitleHeader from "../../utils/TitleHeader";
 import ModalComponent from "../../moleculars/ModalComponent";
 import KetentuanComponentNew from "../../moleculars/KetentuanComponentNew";
 import InputCheckboxComponent from "../../atoms/InputCheckboxComponent";
+import InputSelectComponent from "../../atoms/InputSelectComponent";
 
 function BadanPerkumpulanMobile() {
   TitleHeader("Halaman Perkumpulan");
@@ -53,7 +55,7 @@ function BadanPerkumpulanMobile() {
 
   const dispatch = useDispatch();
   const storeData = useSelector((store) => store?.global);
-  const { provinsi, kabupaten, kecamatan, kelurahan } = storeData;
+  const { provinsi, agent, kabupaten, kecamatan, kelurahan } = storeData;
   const [prov_id, setProv_id] = useState(null);
   const [kab_id, setKab_id] = useState(null);
   const [kec_id, setKec_id] = useState(null);
@@ -67,6 +69,13 @@ function BadanPerkumpulanMobile() {
     return {
       value: row?.id,
       label: row?.nama,
+    };
+  });
+
+  const agentConvert = agent?.map((row) => {
+    return {
+      value: row?.id,
+      label: `${row?.code} - ${row?.name}`,
     };
   });
 
@@ -107,12 +116,17 @@ function BadanPerkumpulanMobile() {
   }, [kab_id]);
 
   useEffect(() => {
+    fetchAgent();
     fetchKelurahan(kec_id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [kec_id]);
 
   const fetchProvinsi = async () => {
     dispatch(await getProvinsi());
+  };
+
+  const fetchAgent = async () => {
+    dispatch(await getAgent());
   };
 
   const fetchKabupaten = async (id) => {
@@ -138,6 +152,7 @@ function BadanPerkumpulanMobile() {
       jalan: "",
       rt: "",
       rw: "",
+      partner: "",
       provinsi: "",
       kabupaten: "",
       kecamatan: "",
@@ -224,6 +239,22 @@ function BadanPerkumpulanMobile() {
                   <b className="title-layanan-f">Informasi Perkumpulan</b>
                   <Gap height={10} />
                   <form action="">
+                    <div className="form-group mb-2">
+                      <LabelComponent label="Nama Partners" />
+                      <InputSelectComponent
+                        options={agentConvert}
+                        onChange={formik.setFieldValue}
+                        onBlur={formik.setFieldTouched}
+                        value={formik.values.partner.value}
+                        id="partner"
+                      />
+
+                      {formik.errors.partner && formik.touched.partner ? (
+                        <TextError error={formik.errors.partner} />
+                      ) : (
+                        ""
+                      )}
+                    </div>
                     <div className="form-group mb-2">
                       <LabelComponent label="Upload KTP & NPWP seluruh Pengurus" />
                       <div {...getRootProps({ className: "form-payment" })}>

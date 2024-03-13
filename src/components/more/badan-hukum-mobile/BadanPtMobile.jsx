@@ -21,7 +21,7 @@ import {
   getKecamatan,
   getKelurahan,
   getProvinsi,
-  getAgent
+  getAgent,
 } from "../../../redux/action/paymentAction";
 import InputSelectSearchComponent from "../../atoms/InputSelectSearchComponent";
 import InputCreatetableSelectComponent from "../../atoms/InputCreatetableSelectComponent";
@@ -84,9 +84,9 @@ function BadanPtMobile() {
   const agentConvert = agent?.map((row) => {
     return {
       value: row?.id,
-      label: `${row?.code} - ${row?.name}`
-    }
-  })
+      label: `${row?.code} - ${row?.name}`,
+    };
+  });
 
   const provinsiConvert = provinsi?.map((row) => {
     return {
@@ -140,7 +140,7 @@ function BadanPtMobile() {
           var paramValue = JSON.parse(info2x);
           console.log(paramValue);
           setUser(paramValue);
-          setP(checkP.query)
+          setP(checkP.query);
           localStorage.setItem("data", JSON.stringify(paramValue));
         }
         if (!localStorage.getItem("data")) {
@@ -170,7 +170,7 @@ function BadanPtMobile() {
   }, [kab_id]);
 
   useEffect(() => {
-    fetchAgent()
+    fetchAgent();
     fetchKelurahan(kec_id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [kec_id]);
@@ -294,17 +294,17 @@ function BadanPtMobile() {
                   <b className="title-layanan-f">Informasi Usaha</b>
                   <Gap height={10} />
                   <form action="">
-                  <div className="form-group mb-2">
+                    <div className="form-group mb-2">
                       <LabelComponent label="Nama Partners" />
-                      <InputSelectComponent 
-                        options={agentConvert} 
-                        onChange={formik.setFieldValue} 
-                        onBlur={formik.setFieldTouched} 
-                        value={formik.values.partner.value} 
-                        id="partner" />
+                      <InputSelectComponent
+                        options={agentConvert}
+                        onChange={formik.setFieldValue}
+                        onBlur={formik.setFieldTouched}
+                        value={formik.values.partner.value}
+                        id="partner"
+                      />
 
-                      {formik.errors.partner &&
-                        formik.touched.partner ? (
+                      {formik.errors.partner && formik.touched.partner ? (
                         <TextError error={formik.errors.partner} />
                       ) : (
                         ""
