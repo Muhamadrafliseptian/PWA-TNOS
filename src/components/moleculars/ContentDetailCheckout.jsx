@@ -11,7 +11,7 @@ import { converterDate } from "../utils/convertDate";
 import { t } from "i18next";
 
 function ContentDetailCheckout({ layanan, data }) {
-  // console.log(layanan)
+
   const name_opsi = data?.name_badan_hukum
     ? JSON.parse(data?.name_badan_hukum)
     : "";
@@ -180,19 +180,19 @@ function ContentDetailCheckout({ layanan, data }) {
               />
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
-                  <CheckoutValue
-                    title="Jam Terbayar"
-                    color="green"
-                    value={converterDate(moment(data?.paid_at))}
-                  />
-                )
+                    <CheckoutValue
+                      title="Jam Terbayar"
+                      color="green"
+                      value={converterDate(moment(data?.paid_at))}
+                    />
+                  )
                 : data?.expiry_date && (
-                  <CheckoutValue
-                    title="Jam Kadaluarsa"
-                    color="red"
-                    value={converterDate(moment(data?.expiry_date))}
-                  />
-                )}
+                    <CheckoutValue
+                      title="Jam Kadaluarsa"
+                      color="red"
+                      value={converterDate(moment(data?.expiry_date))}
+                    />
+                  )}
               <CheckoutValue
                 title="Biaya"
                 value={data?.order_total}
@@ -328,19 +328,19 @@ function ContentDetailCheckout({ layanan, data }) {
               />
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
-                  <CheckoutValue
-                    title="Jam Terbayar"
-                    color="green"
-                    value={converterDate(moment(data?.paid_at))}
-                  />
-                )
+                    <CheckoutValue
+                      title="Jam Terbayar"
+                      color="green"
+                      value={converterDate(moment(data?.paid_at))}
+                    />
+                  )
                 : data?.expiry_date && (
-                  <CheckoutValue
-                    title="Jam Kadaluarsa"
-                    color="red"
-                    value={converterDate(moment(data?.expiry_date))}
-                  />
-                )}
+                    <CheckoutValue
+                      title="Jam Kadaluarsa"
+                      color="red"
+                      value={converterDate(moment(data?.expiry_date))}
+                    />
+                  )}
               <CheckoutValue
                 title="Biaya"
                 value={data?.order_total}
@@ -459,19 +459,19 @@ function ContentDetailCheckout({ layanan, data }) {
               />
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
-                  <CheckoutValue
-                    title="Jam Terbayar"
-                    color="green"
-                    value={converterDate(moment(data?.paid_at))}
-                  />
-                )
+                    <CheckoutValue
+                      title="Jam Terbayar"
+                      color="green"
+                      value={converterDate(moment(data?.paid_at))}
+                    />
+                  )
                 : data?.expiry_date && (
-                  <CheckoutValue
-                    title="Jam Kadaluarsa"
-                    color="red"
-                    value={converterDate(moment(data?.expiry_date))}
-                  />
-                )}
+                    <CheckoutValue
+                      title="Jam Kadaluarsa"
+                      color="red"
+                      value={converterDate(moment(data?.expiry_date))}
+                    />
+                  )}
               <CheckoutValue
                 title="Biaya"
                 value={data?.order_total}
@@ -590,19 +590,19 @@ function ContentDetailCheckout({ layanan, data }) {
               />
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
-                  <CheckoutValue
-                    title="Jam Terbayar"
-                    color="green"
-                    value={converterDate(moment(data?.paid_at))}
-                  />
-                )
+                    <CheckoutValue
+                      title="Jam Terbayar"
+                      color="green"
+                      value={converterDate(moment(data?.paid_at))}
+                    />
+                  )
                 : data?.expiry_date && (
-                  <CheckoutValue
-                    title="Jam Kadaluarsa"
-                    color="red"
-                    value={converterDate(moment(data?.expiry_date))}
-                  />
-                )}
+                    <CheckoutValue
+                      title="Jam Kadaluarsa"
+                      color="red"
+                      value={converterDate(moment(data?.expiry_date))}
+                    />
+                  )}
               <CheckoutValue
                 title="Biaya"
                 value={data?.order_total}
@@ -658,19 +658,19 @@ function ContentDetailCheckout({ layanan, data }) {
               />
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
-                  <CheckoutValue
-                    title="Jam Terbayar"
-                    color="green"
-                    value={converterDate(moment(data?.paid_at))}
-                  />
-                )
+                    <CheckoutValue
+                      title="Jam Terbayar"
+                      color="green"
+                      value={converterDate(moment(data?.paid_at))}
+                    />
+                  )
                 : data?.expiry_date && (
-                  <CheckoutValue
-                    title="Jam Kadaluarsa"
-                    color="red"
-                    value={converterDate(moment(data?.expiry_date))}
-                  />
-                )}
+                    <CheckoutValue
+                      title="Jam Kadaluarsa"
+                      color="red"
+                      value={converterDate(moment(data?.expiry_date))}
+                    />
+                  )}
               <CheckoutValue
                 title="Biaya"
                 value={data?.order_total}
@@ -701,10 +701,7 @@ function ContentDetailCheckout({ layanan, data }) {
                 title="Keperluan Pengamanan Untuk"
                 value={data?.needs}
               />
-              <CheckoutValue
-                title="Jarak Lokasi (KM)"
-                value={data?.jarak}
-              />
+              <CheckoutValue title="Jarak Lokasi (KM)" value={data?.jarak} />
               <CheckoutValue
                 title="Jam kerja"
                 value={`${data?.duration} Jam`}
@@ -734,20 +731,19 @@ function ContentDetailCheckout({ layanan, data }) {
               />
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
-                  <CheckoutValue
-                    title="Jam Terbayar"
-                    color="green"
-                    value={converterDate(moment(data?.paid_at))}
-                  />
-                )
+                    <CheckoutValue
+                      title="Jam Terbayar"
+                      color="green"
+                      value={converterDate(moment(data?.paid_at))}
+                    />
+                  )
                 : data?.expiry_date && (
-                  <CheckoutValue
-                    title="Jam Kadaluarsa"
-                    color="red"
-                    value={converterDate(moment(data?.expiry_date))}
-                  />
-                )}
-
+                    <CheckoutValue
+                      title="Jam Kadaluarsa"
+                      color="red"
+                      value={converterDate(moment(data?.expiry_date))}
+                    />
+                  )}
 
               <CheckoutValue
                 title="Biaya Transportasi"
@@ -802,69 +798,68 @@ function ContentDetailCheckout({ layanan, data }) {
               <CheckoutValue
                 title="No. HP Penanggung Jawab"
                 value={data?.nomor_pic}
-              /> <hr />
+              />{" "}
+              <hr />
               <CheckoutHeader
                 image={location}
                 title="Lokasi Pengamanan"
                 alt="Lokasi Pengamanan"
               />
-              <p style={{ fontSize: '12px' }} >{data?.location}</p> <hr />
-
-              <CheckoutHeader
-                image={time}
-                title="Waktu"
-                alt="Waktu"
-              />
+              <p style={{ fontSize: "12px" }}>{data?.location}</p> <hr />
+              <CheckoutHeader image={time} title="Waktu" alt="Waktu" />
               <CheckoutValue
                 title="Tanggal Mulai"
                 value={data?.tanggal_mulai}
               />
-              <CheckoutValue
-                title="Jam Mulai"
-                value={data?.jam_mulai}
-              />
+              <CheckoutValue title="Jam Mulai" value={data?.jam_mulai} />
               {data?.type === "PAS" ? (
                 <>
                   <CheckoutValue
                     title="Durasi Pengamanan"
-                    value={parseInt(data?.durasi_pengamanan) == 12 ? "12 Jam" : "8 Jam" }
+                    value={
+                      parseInt(data?.durasi_pengamanan) == 12
+                        ? "12 Jam"
+                        : "8 Jam"
+                    }
                   />
                 </>
               ) : (
                 <>
-                <CheckoutValue
-                title="Durasi Pengamanan"
-                value={parseInt(data?.durasi_pengamanan) >= 8 ? "Fullday (8 jam)" : parseInt(data?.durasi_pengamanan) < 4 ? `${data?.duration} Jam` : "Halfday (4 jam)"}
-              />
+                  <CheckoutValue
+                    title="Durasi Pengamanan"
+                    value={
+                      parseInt(data?.durasi_pengamanan) >= 8
+                        ? "Fullday (8 jam)"
+                        : parseInt(data?.durasi_pengamanan) < 4
+                        ? `${data?.duration} Jam`
+                        : "Halfday (4 jam)"
+                    }
+                  />
                 </>
-              ) }
+              )}
               <CheckoutValue
                 title="Jumlah Tenaga Pengamanan"
                 value={data?.jml_personil + " Orang"}
               />
-              <CheckoutValue
-                title="Jarak"
-                value={`${data?.jarak} KM`}
-              />
-
+              <CheckoutValue title="Jarak" value={`${data?.jarak} KM`} />
             </div>
             <Gap height={15} />
             <div>
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
-                  <CheckoutValue
-                    title="Jam Terbayar"
-                    color="green"
-                    value={converterDate(moment(data?.paid_at))}
-                  />
-                )
+                    <CheckoutValue
+                      title="Jam Terbayar"
+                      color="green"
+                      value={converterDate(moment(data?.paid_at))}
+                    />
+                  )
                 : data?.expiry_date && (
-                  <CheckoutValue
-                    title="Jam Kadaluarsa"
-                    color="red"
-                    value={converterDate(moment(data?.expiry_date))}
-                  />
-                )}
+                    <CheckoutValue
+                      title="Jam Kadaluarsa"
+                      color="red"
+                      value={converterDate(moment(data?.expiry_date))}
+                    />
+                  )}
               {data?.type === "PAS" ? (
                 <div></div>
               ) : (
@@ -881,7 +876,6 @@ function ContentDetailCheckout({ layanan, data }) {
                   />
                 </>
               )}
-
               <CheckoutValue
                 title="Biaya Tekhnical Meeting"
                 value={parseInt(data?.biaya_tekhnical_meeting)}
@@ -891,7 +885,8 @@ function ContentDetailCheckout({ layanan, data }) {
                 title="Biaya Pengamanan"
                 value={parseInt(data?.biaya_pengamanan)}
                 number={true}
-              /> <hr />
+              />{" "}
+              <hr />
               <CheckoutValue
                 title="Total Pembayaran"
                 value={parseInt(data?.order_total)}
@@ -920,58 +915,53 @@ function ContentDetailCheckout({ layanan, data }) {
               <CheckoutValue
                 title="No. HP Penanggung Jawab"
                 value={data?.nomor_pic}
-              /> <hr />
+              />{" "}
+              <hr />
               <CheckoutHeader
                 image={location}
                 title="Lokasi Pengamanan"
                 alt="Lokasi Pengamanan"
               />
-              <p style={{ fontSize: '12px' }} >{data?.location}</p> <hr />
-
-              <CheckoutHeader
-                image={time}
-                title="Waktu"
-                alt="Waktu"
-              />
+              <p style={{ fontSize: "12px" }}>{data?.location}</p> <hr />
+              <CheckoutHeader image={time} title="Waktu" alt="Waktu" />
               <CheckoutValue
                 title="Tanggal Mulai"
                 value={data?.tanggal_mulai}
               />
-              <CheckoutValue
-                title="Jam Mulai"
-                value={data?.jam_mulai}
-              />
+              <CheckoutValue title="Jam Mulai" value={data?.jam_mulai} />
               <CheckoutValue
                 title="Durasi Pengamanan"
-                value={parseInt(data?.durasi_pengamanan) >= 8 ? "Fullday (8 jam)" : parseInt(data?.durasi_pengamanan) < 4 ? `${data?.duration} Jam` : "Halfday (4 jam)"}
+                value={
+                  parseInt(data?.durasi_pengamanan) >= 8
+                    ? "Fullday (8 jam)"
+                    : parseInt(data?.durasi_pengamanan) < 4
+                    ? `${data?.duration} Jam`
+                    : "Halfday (4 jam)"
+                }
               />
               <CheckoutValue
                 title="Jumlah Tenaga Pengamanan"
                 value={data?.jml_personil + " Orang"}
               />
-              <CheckoutValue
-                title="Jarak"
-                value={`${data?.jarak} KM`}
-              />
-
+              <CheckoutValue title="Jarak" value={`${data?.jarak} KM`} />
             </div>
             <Gap height={15} />
             <div>
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
-                  <CheckoutValue
-                    title="Jam Terbayar"
-                    color="green"
-                    value={converterDate(moment(data?.paid_at))}
-                  />
-                )
+                    <CheckoutValue
+                      title="Jam Terbayar"
+                      color="green"
+                      value={converterDate(moment(data?.paid_at))}
+                    />
+                  )
                 : data?.expiry_date && (
-                  <CheckoutValue
-                    title="Jam Kadaluarsa"
-                    color="red"
-                    value={converterDate(moment(data?.expiry_date))}
-                  />
-                )}
+                    <CheckoutValue
+                      title="Jam Kadaluarsa"
+                      color="red"
+                      value={converterDate(moment(data?.expiry_date))}
+                    />
+                  )}
               <CheckoutValue
                 title="Biaya Transportasi"
                 value={parseInt(data?.biaya_transport)}
@@ -991,7 +981,8 @@ function ContentDetailCheckout({ layanan, data }) {
                 title="Biaya Pengamanan"
                 value={parseInt(data?.biaya_pengamanan)}
                 number={true}
-              /> <hr />
+              />{" "}
+              <hr />
               <CheckoutValue
                 title="Total Pembayaran"
                 value={parseInt(data?.order_total)}
@@ -1006,33 +997,36 @@ function ContentDetailCheckout({ layanan, data }) {
             <div>
               <CheckoutHeader
                 image={usaha}
-                title="Informasi Usaha"
-                alt="Informasi Usaha"
+                title="Informasi Pesanan"
+                alt="Informasi Pesanan"
               />
-              <CheckoutValue title="Partner" value={data?.partnerdeka?.name} />
-              <CheckoutValue title="Jenis Usaha" value={layanan} />
+              <CheckoutValue title="Jenis Layanan" value={layanan} />
               <CheckoutValue title="Keperluan" value={data?.needs} />
 
               <CheckoutValue
                 title="Photo dan Dokumen"
                 value={
-                  <div className="image-detail-checkout-f">
-                    <div className="title"></div>
-                    {data?.file_document &&
-                      JSON.parse(data?.file_document)?.map((file, key) => {
-                        if (file?.mime == "application/pdf") {
-                          <i>
-                            Hamdan
-                          </i>
-                        } else {
+                  data?.file_document &&
+                  JSON.parse(data?.file_document)?.map((file, key) => (
+                    <>
+                      {file.mime == "image/png" ? (
+                        <div className="image-detail-checkout-f">
+                          <div className="title"></div>
                           <img
                             key={key}
                             src={file.image_url}
-                            alt={file.mime}
+                            alt={file.image_name}
                           />
-                        }
-                      })}
-                  </div>
+                        </div>
+                      ) : (
+                        <>
+                          <a target="_blank" href={file.image_url}>
+                            Lihat Dokumen
+                          </a>
+                        </>
+                      )}
+                    </>
+                  ))
                 }
               />
             </div>
@@ -1046,19 +1040,19 @@ function ContentDetailCheckout({ layanan, data }) {
               />
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
-                  <CheckoutValue
-                    title="Jam Terbayar"
-                    color="green"
-                    value={converterDate(moment(data?.paid_at))}
-                  />
-                )
+                    <CheckoutValue
+                      title="Jam Terbayar"
+                      color="green"
+                      value={converterDate(moment(data?.paid_at))}
+                    />
+                  )
                 : data?.expiry_date && (
-                  <CheckoutValue
-                    title="Jam Kadaluarsa"
-                    color="red"
-                    value={converterDate(moment(data?.expiry_date))}
-                  />
-                )}
+                    <CheckoutValue
+                      title="Jam Kadaluarsa"
+                      color="red"
+                      value={converterDate(moment(data?.expiry_date))}
+                    />
+                  )}
               <CheckoutValue
                 title="Biaya"
                 value={data?.order_total}
@@ -1096,19 +1090,19 @@ function ContentDetailCheckout({ layanan, data }) {
               />
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
-                  <CheckoutValue
-                    title="Jam Terbayar"
-                    color="green"
-                    value={converterDate(moment(data?.paid_at))}
-                  />
-                )
+                    <CheckoutValue
+                      title="Jam Terbayar"
+                      color="green"
+                      value={converterDate(moment(data?.paid_at))}
+                    />
+                  )
                 : data?.expiry_date && (
-                  <CheckoutValue
-                    title="Jam Kadaluarsa"
-                    color="red"
-                    value={converterDate(moment(data?.expiry_date))}
-                  />
-                )}
+                    <CheckoutValue
+                      title="Jam Kadaluarsa"
+                      color="red"
+                      value={converterDate(moment(data?.expiry_date))}
+                    />
+                  )}
               <CheckoutValue
                 title="Komitmen Fee"
                 value={data?.order_total}
