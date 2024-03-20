@@ -32,7 +32,7 @@ function InputCheckboxComponent({
       case "badan-usaha-atau-hukum":
         return (
           <Iframe
-            url="https://tnosbantuan.freshdesk.com/support/solutions/articles/150000042230"
+            url="https://tnosbantuan.freshdesk.com/support/solutions/articles/150000042266"
             width="100%"
             height="100%"
             styles={{ minHeight: "100vh" }}
@@ -46,6 +46,19 @@ function InputCheckboxComponent({
         return (
           <Iframe
             url="https://tnosbantuan.freshdesk.com/support/solutions/articles/150000043751-membatalkan-pesanan-csh-comprehensive-solusi-hukum-"
+            width="100%"
+            height="100%"
+            styles={{ minHeight: "100vh" }}
+            id=""
+            className=""
+            display="block"
+            position="relative"
+          />
+        );
+      case "pembayaran-lainnya":
+        return (
+          <Iframe
+            url="https://tnosbantuan.freshdesk.com/support/solutions/articles/150000042230"
             width="100%"
             height="100%"
             styles={{ minHeight: "100vh" }}
