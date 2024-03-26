@@ -189,7 +189,7 @@ const lainnyaSchema = Yup.object({
     .min(1, "Harga total harus lebih besar atau sama dengan 1")
     .typeError("Nominal pembayaran must be a number")
     .required("Nominal pembayaran wajib di isi"),
-  file_document: Yup.array().required("File/Image wajib di isi"),
+  // file_document: Yup.array().required("File/Image wajib di isi"),
   ketentuan_cek: Yup.boolean().oneOf([true], "Ketentuan wajib di isi"),
 });
 
