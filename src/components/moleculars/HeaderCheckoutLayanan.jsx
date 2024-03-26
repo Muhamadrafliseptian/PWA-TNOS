@@ -8,7 +8,6 @@ import Lainnya from "../../assets/images/new pwa icon/dashboard/iconPembayaranLa
 function HeaderCheckoutLayanan({ layanan, payment_status }) {
   // console.log(payment_status);
   const renderStatusOrder = () => {
-    console.log("Status : " + payment_status)
     switch (payment_status) {
       case "RUN":
         return (

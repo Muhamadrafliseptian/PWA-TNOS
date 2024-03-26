@@ -86,7 +86,7 @@ function DetailPengamananKorporatMobileD() {
   };
 
   const keyCrpyto = "U2FsdGVkX1+RFxINtDchhPqAxYecNts3Di1tTgbwHg0="
-  // console.log(storeData?.detail_data_layanan?.type)
+
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -110,7 +110,7 @@ function DetailPengamananKorporatMobileD() {
       dispatch(await paymentBadanHukum(updateValues));
     },
   });
-  // console.log(detail_data_layanan)
+
   const renderButton = () => {
     if (detail_data_layanan?.payment_status === "ORDER") {
       return <ButtonComponent title="Bayar Sekarang " type="submit" />;

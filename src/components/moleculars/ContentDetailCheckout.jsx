@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CheckoutHeader from "./CheckoutHeader";
 import CheckoutValue from "./CheckoutValue";
 import usaha from "../../assets/images/new pwa icon/usaha.svg";
-import user from "../../assets/images/new pwa icon/user.svg";
+import users from "../../assets/images/new pwa icon/user.svg";
 import location from "../../assets/images/new pwa icon/location.svg";
 import time from "../../assets/images/new pwa icon/time.svg";
 import Gap from "./Gap";
@@ -17,6 +17,7 @@ const secretKey = `${process.env.REACT_APP_SECRET_KEY}`;
 
 function ContentDetailCheckout({ layanan, data }) {
   const params = useParams();
+  
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("data")));
   const navigate = useNavigate();
 
@@ -222,7 +223,7 @@ function ContentDetailCheckout({ layanan, data }) {
             <Gap height={15} />
             <div>
               <CheckoutHeader
-                image={user}
+                image={users}
                 title="Rincian Pembayaran"
                 alt="Rincian Pembayaran"
               />
@@ -370,7 +371,7 @@ function ContentDetailCheckout({ layanan, data }) {
             <Gap height={15} />
             <div>
               <CheckoutHeader
-                image={user}
+                image={users}
                 title="Rincian Pembayaran"
                 alt=""
               />
@@ -501,7 +502,7 @@ function ContentDetailCheckout({ layanan, data }) {
             <Gap height={15} />
             <div>
               <CheckoutHeader
-                image={user}
+                image={users}
                 title="Rincian Pembayaran"
                 alt=""
               />
@@ -632,7 +633,7 @@ function ContentDetailCheckout({ layanan, data }) {
             <Gap height={15} />
             <div>
               <CheckoutHeader
-                image={user}
+                image={users}
                 title="Rincian Pembayaran"
                 alt=""
               />
@@ -706,7 +707,7 @@ function ContentDetailCheckout({ layanan, data }) {
 
             <div>
               <CheckoutHeader
-                image={user}
+                image={users}
                 title="Rincian Pembayaran"
                 alt=""
               />
@@ -779,7 +780,7 @@ function ContentDetailCheckout({ layanan, data }) {
             <Gap height={15} />
             <div>
               <CheckoutHeader
-                image={user}
+                image={users}
                 title="Rincian Pembayaran"
                 alt="Rincian Pembayaran"
               />
@@ -1138,7 +1139,7 @@ function ContentDetailCheckout({ layanan, data }) {
 
             <div>
               <CheckoutHeader
-                image={user}
+                image={users}
                 title="Rincian Pembayaran"
                 alt="Rincian Pembayaran"
               />
