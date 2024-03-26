@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../../../assets/css/allLayanan.css";
 import Gap from "../../moleculars/Gap";
 import LabelComponent from "../../atoms/LabelComponent";
@@ -12,12 +12,20 @@ import { useDropzone } from "react-dropzone";
 import iconFileInput from "../../../assets/images/new pwa icon/inputFile/inputFileIcon.svg";
 import fileUploadIcon from "../../../assets/images/new pwa icon/inputFile/file-upload.svg";
 import { useDispatch } from "react-redux";
-import { badanHukumCreate, getAgent } from "../../../redux/action/paymentAction";
+import {
+  badanHukumCreate,
+  getAgent,
+} from "../../../redux/action/paymentAction";
 import { showMessage } from "../../utils/Message";
 import TitleHeader from "../../utils/TitleHeader";
 import InputCheckboxComponent from "../../atoms/InputCheckboxComponent";
 import InputSelectComponent from "../../atoms/InputSelectComponent";
 import { useSelector } from "react-redux";
+import { decode as base64_decode } from "base-64";
+import { getParams } from "../../moleculars/GetParams";
+var CryptoJS = require("crypto-js");
+
+const secretKey = `${process.env.REACT_APP_SECRET_KEY}`;
 
 function BadanLainnyaMobile() {
   TitleHeader("Halaman Lainnya");
@@ -39,6 +47,10 @@ function BadanLainnyaMobile() {
     },
     maxSize: 1024 * 1024,
   });
+  const [getP, setP] = useState(null);
+  const [usersData, setUser] = useState(
+    JSON.parse(localStorage.getItem("userInfo"))
+  );
 
   const dispatch = useDispatch();
   const storeData = useSelector((store) => store?.global);
@@ -60,9 +72,9 @@ function BadanLainnyaMobile() {
       phone: user?.phone,
       file_document: "",
       ketentuan_cek: false,
+      params: getP
     },
     onSubmit: async (values) => {
-      //   console.log(values);
       dispatch(
         await badanHukumCreate(
           values,
@@ -76,6 +88,7 @@ function BadanLainnyaMobile() {
 
   useEffect(() => {
     fetchAgent();
+    checkParams()
   }, []);
 
   const fetchAgent = async () => {
@@ -95,6 +108,43 @@ function BadanLainnyaMobile() {
     };
   });
 
+  const checkParams = () => {
+    let checkP = getParams(["query"]);
+
+    if (!checkP) {
+      console.log("params tidak ditemukan");
+    } else {
+      var base64regex =
+        /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
+      if (!base64regex.test(checkP.query)) {
+        console.log("data base64 tidak cocok");
+        navigate("/not-found");
+      } else {
+        let string = base64_decode(checkP.query);
+        let cryptdata = string;
+        const info2x = CryptoJS.AES.decrypt(cryptdata, secretKey).toString(
+          CryptoJS.enc.Utf8
+        );
+
+        if (!info2x) {
+          console.log("data base64 not match when decrypt");
+        } else {
+          var paramValue = JSON.parse(info2x);
+          console.log(paramValue);
+          setUser(paramValue);
+          setP(checkP.query);
+          localStorage.setItem("data", JSON.stringify(paramValue));
+        }
+        if (!localStorage.getItem("data")) {
+          if (!paramValue.user_id) {
+            console.log("salah");
+            navigate("/not-found");
+          }
+        }
+      }
+    }
+  };
+
   return (
     <>
       <div className="container-class">
@@ -104,64 +154,64 @@ function BadanLainnyaMobile() {
               <div className="payment-content">
                 <div className="container-layanan-f">
                   <Gap height={10} />
-                  <div className="form-group mb-2">
-                    <LabelComponent
-                      id="needs"
-                      label="Contoh pengisian: Sertifikat Jasa Usaha Konstruksi,
-                      Penjagaan Rumah Jl. Pondok Indah atau yang lainnya."
-                    />
-                    <textarea
-                      name="needs"
-                      id="needs"
-                      cols="10"
-                      rows="5"
-                      placeholder="Masukan keperluan anda"
-                      value={formik.values.needs}
-                      onChange={formik.handleChange("needs")}
-                      onBlur={formik.handleBlur("needs")}
-                      className={`form-payment ${
-                        formik.errors.needs && "is-invalid"
-                      }`}
-                    />
-                    {formik.errors.needs && formik.touched.needs ? (
-                      <TextError error={formik.errors.needs} />
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                  <div className="form-group mb-2">
-                    <LabelComponent
-                      id="harga_total"
-                      label="Biaya (Isi nominal sesuai kesepakatan)"
-                    />
-                    <InputComponent
-                      id="harga_total"
-                      type={"number"}
-                      placeholder={"Biaya (Isi nominal sesuai kesepakatan)"}
-                      defaultValue={formik.values.harga_total}
-                      onChange={formik.handleChange("harga_total")}
-                      onBlur={formik.handleBlur("harga_total")}
-                    />
-                    {formik.errors.harga_total && formik.touched.harga_total ? (
-                      <TextError error={formik.errors.harga_total} />
-                    ) : (
-                      ""
-                    )}
-                  </div>
-
                   <form action="">
                     <div className="form-group mb-2">
-                      <LabelComponent label="Nama Partners" />
-                      <InputSelectComponent
-                        options={agentConvert}
-                        onChange={formik.setFieldValue}
-                        onBlur={formik.setFieldTouched}
-                        value={formik.values.partner.value}
-                        id="partner"
+                      <LabelComponent
+                        id="needs"
+                        label="Contoh pengisian: Sertifikat Jasa Usaha Konstruksi atau yang lainnya."
                       />
+                      <div className="form-group mb-2 mt-4">
+                        <LabelComponent label="Nama Partners" />
+                        <InputSelectComponent
+                          options={agentConvert}
+                          onChange={formik.setFieldValue}
+                          onBlur={formik.setFieldTouched}
+                          value={formik.values.partner.value}
+                          id="partner"
+                        />
 
-                      {formik.errors.partner && formik.touched.partner ? (
-                        <TextError error={formik.errors.partner} />
+                        {formik.errors.partner && formik.touched.partner ? (
+                          <TextError error={formik.errors.partner} />
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                      <LabelComponent label="Keperluan" />
+                      <textarea
+                        name="needs"
+                        id="needs"
+                        cols="10"
+                        rows="5"
+                        placeholder="Masukan keperluan anda"
+                        value={formik.values.needs}
+                        onChange={formik.handleChange("needs")}
+                        onBlur={formik.handleBlur("needs")}
+                        className={`form-payment ${
+                          formik.errors.needs && "is-invalid"
+                        }`}
+                      />
+                      {formik.errors.needs && formik.touched.needs ? (
+                        <TextError error={formik.errors.needs} />
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                    <div className="form-group mb-2">
+                      <LabelComponent
+                        id="harga_total"
+                        label="Biaya (Isi nominal sesuai kesepakatan)"
+                      />
+                      <InputComponent
+                        id="harga_total"
+                        type={"number"}
+                        placeholder={"Biaya (Isi nominal sesuai kesepakatan)"}
+                        defaultValue={formik.values.harga_total}
+                        onChange={formik.handleChange("harga_total")}
+                        onBlur={formik.handleBlur("harga_total")}
+                      />
+                      {formik.errors.harga_total &&
+                      formik.touched.harga_total ? (
+                        <TextError error={formik.errors.harga_total} />
                       ) : (
                         ""
                       )}
@@ -238,7 +288,6 @@ function BadanLainnyaMobile() {
                       title={"Lanjut Pembayaran"}
                       type="submit"
                       onClick={formik.handleSubmit}
-                      // onClick={() => handlePayment()}
                     />
                   </form>
                 </div>
