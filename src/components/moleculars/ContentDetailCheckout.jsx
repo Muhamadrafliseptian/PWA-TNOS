@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CheckoutHeader from "./CheckoutHeader";
 import CheckoutValue from "./CheckoutValue";
 import usaha from "../../assets/images/new pwa icon/usaha.svg";
@@ -9,8 +9,56 @@ import Gap from "./Gap";
 import moment from "moment";
 import { converterDate } from "../utils/convertDate";
 import { t } from "i18next";
+import { useNavigate, useParams } from "react-router-dom";
+import { getParams } from "../moleculars/GetParams";
+import { decode as base64_decode } from "base-64";
+var CryptoJS = require("crypto-js");
+const secretKey = `${process.env.REACT_APP_SECRET_KEY}`;
 
 function ContentDetailCheckout({ layanan, data }) {
+  const params = useParams();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("data")));
+  const navigate = useNavigate();
+
+  const checkParams = () => {
+    let checkP = getParams(["query"]);
+
+    if (!checkP) {
+      console.log("params tidak ditemukan");
+    } else {
+      var base64regex =
+        /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
+      if (!base64regex.test(checkP.query)) {
+        console.log("data base64 tidak cocok");
+        navigate("/not-found");
+      } else {
+        let string = base64_decode(checkP.query);
+        let cryptdata = string;
+        const info2x = CryptoJS.AES.decrypt(cryptdata, secretKey).toString(
+          CryptoJS.enc.Utf8
+        );
+
+        if (!info2x) {
+          console.log("data base64 not match when decrypt");
+        } else {
+          var paramValue = JSON.parse(info2x);
+          console.log(paramValue.id);
+          setUser(paramValue);
+          localStorage.setItem("data", JSON.stringify(paramValue));
+        }
+        if (!localStorage.getItem("data")) {
+          if (!paramValue) {
+            console.log("salah");
+            navigate("/not-found");
+          }
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    checkParams();
+  }, []);
 
   const name_opsi = data?.name_badan_hukum
     ? JSON.parse(data?.name_badan_hukum)
@@ -300,7 +348,7 @@ function ContentDetailCheckout({ layanan, data }) {
               <CheckoutHeader
                 image={user}
                 title="Informasi Pengguna"
-                alt="Informasi Pengguna"
+                alt=""
               />
               <CheckoutValue
                 title="Susunan Pemegang Saham"
@@ -324,7 +372,7 @@ function ContentDetailCheckout({ layanan, data }) {
               <CheckoutHeader
                 image={user}
                 title="Rincian Pembayaran"
-                alt="Rincian Pembayaran"
+                alt=""
               />
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
@@ -436,7 +484,7 @@ function ContentDetailCheckout({ layanan, data }) {
               <CheckoutHeader
                 image={user}
                 title="Informasi Pengguna"
-                alt="Informasi Pengguna"
+                alt=""
               />
               <CheckoutValue
                 opsi="direksi"
@@ -455,7 +503,7 @@ function ContentDetailCheckout({ layanan, data }) {
               <CheckoutHeader
                 image={user}
                 title="Rincian Pembayaran"
-                alt="Rincian Pembayaran"
+                alt=""
               />
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
@@ -567,7 +615,7 @@ function ContentDetailCheckout({ layanan, data }) {
               <CheckoutHeader
                 image={user}
                 title="Informasi Pengguna"
-                alt="Informasi Pengguna"
+                alt=""
               />
               <CheckoutValue
                 opsi="direksi"
@@ -586,7 +634,7 @@ function ContentDetailCheckout({ layanan, data }) {
               <CheckoutHeader
                 image={user}
                 title="Rincian Pembayaran"
-                alt="Rincian Pembayaran"
+                alt=""
               />
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
@@ -634,17 +682,23 @@ function ContentDetailCheckout({ layanan, data }) {
               <CheckoutValue
                 title="Photo dan Dokumen"
                 value={
-                  <div className="image-detail-checkout-f">
-                    <div className="title"></div>
-                    {data?.file_document &&
-                      JSON.parse(data?.file_document)?.map((file, key) => (
-                        <img
-                          key={key}
-                          src={file.image_url}
-                          alt={file.image_name}
-                        />
-                      ))}
-                  </div>
+                  data?.file_document == null ? (
+                    <span>Tidak Ada Dokumen atau Foto</span>
+                  ) : (
+                    <>
+                      <div className="image-detail-checkout-f">
+                        <div className="title"></div>
+                        {data?.file_document &&
+                          JSON.parse(data?.file_document)?.map((file, key) => (
+                            <img
+                              key={key}
+                              src={file.image_url}
+                              alt={file.image_name}
+                            />
+                          ))}
+                      </div>
+                    </>
+                  )
                 }
               />
             </div>
@@ -654,7 +708,7 @@ function ContentDetailCheckout({ layanan, data }) {
               <CheckoutHeader
                 image={user}
                 title="Rincian Pembayaran"
-                alt="Rincian Pembayaran"
+                alt=""
               />
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
@@ -812,7 +866,7 @@ function ContentDetailCheckout({ layanan, data }) {
                 value={data?.tanggal_mulai}
               />
               <CheckoutValue title="Jam Mulai" value={data?.jam_mulai} />
-              {data?.type === "PAS" ? (
+              {data?.tnos_service_id == 4 && data?.tnos_subservice_id == 1 ? (
                 <>
                   <CheckoutValue
                     title="Durasi Pengamanan"
@@ -1006,38 +1060,38 @@ function ContentDetailCheckout({ layanan, data }) {
               <CheckoutValue
                 title="Photo dan Dokumen"
                 value={
-                  data?.file_document &&
-                  JSON.parse(data?.file_document)?.map((file, key) => (
-                    <>
-                      {file.mime == "image/png" ? (
-                        <div className="image-detail-checkout-f">
-                          <div className="title"></div>
-                          <img
-                            key={key}
-                            src={file.image_url}
-                            alt={file.image_name}
-                          />
-                        </div>
-                      ) : (
-                        <>
-                          <a target="_blank" href={file.image_url}>
-                            Lihat Dokumen
-                          </a>
-                        </>
-                      )}
-                    </>
-                  ))
+                  data?.file_document == null ? (
+                    <span>Tidak Ada Dokumen / Foto</span>
+                  ) : (
+                    data?.file_document &&
+                    JSON.parse(data?.file_document)?.map((file, key) => (
+                      <>
+                        {file.mime == "image/png" ? (
+                          <div className="image-detail-checkout-f">
+                            <div className="title"></div>
+                            <img
+                              key={key}
+                              src={file.image_url}
+                              alt={file.image_name}
+                            />
+                          </div>
+                        ) : (
+                          <>
+                            <a target="_blank" href={file.image_url}>
+                              Lihat Dokumen
+                            </a>
+                          </>
+                        )}
+                      </>
+                    ))
+                  )
                 }
               />
             </div>
             <Gap height={15} />
 
             <div>
-              <CheckoutHeader
-                image={user}
-                title="Rincian Pembayaran"
-                alt="Rincian Pembayaran"
-              />
+              <CheckoutHeader image={user} title="Rincian Pembayaran" alt="" />
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
                     <CheckoutValue
