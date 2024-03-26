@@ -227,6 +227,7 @@ function BadanPtMobile() {
       susunan_direksi: "",
       pemegang_saham: "",
       ketentuan_cek: false,
+      params: getP
     },
     onSubmit: async (values) => {
       values.name_badan_hukum = [
