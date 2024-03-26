@@ -30,7 +30,6 @@ import ModalComponent from "../../moleculars/ModalComponent";
 import KetentuanComponentNew from "../../moleculars/KetentuanComponentNew";
 import InputCheckboxComponent from "../../atoms/InputCheckboxComponent";
 import InputSelectComponent from "../../atoms/InputSelectComponent";
-
 import { decode as base64_decode } from "base-64";
 import { getParams } from "../../moleculars/GetParams";
 var CryptoJS = require("crypto-js");
@@ -58,6 +57,11 @@ function BadanCvMobile() {
     },
     maxSize: 1024 * 1024,
   });
+
+  const [getP, setP] = useState(null);
+  const [usersData, setUser] = useState(
+    JSON.parse(localStorage.getItem("userInfo"))
+  );
 
   const dispatch = useDispatch();
   const storeData = useSelector((store) => store?.global);
@@ -123,6 +127,7 @@ function BadanCvMobile() {
 
   useEffect(() => {
     fetchAgent();
+    checkParams();
     fetchKelurahan(kec_id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [kec_id]);
@@ -178,6 +183,7 @@ function BadanCvMobile() {
       susunan_direksi: "",
       pemegang_saham: "",
       ketentuan_cek: false,
+      params: getP
     },
     onSubmit: async (values) => {
       values.name_badan_hukum = [
@@ -217,6 +223,43 @@ function BadanCvMobile() {
       {file.path} - {file.size} bytes
     </li>
   ));
+
+  const checkParams = () => {
+    let checkP = getParams(["query"]);
+
+    if (!checkP) {
+      console.log("params tidak ditemukan");
+    } else {
+      var base64regex =
+        /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
+      if (!base64regex.test(checkP.query)) {
+        console.log("data base64 tidak cocok");
+        navigate("/not-found");
+      } else {
+        let string = base64_decode(checkP.query);
+        let cryptdata = string;
+        const info2x = CryptoJS.AES.decrypt(cryptdata, secretKey).toString(
+          CryptoJS.enc.Utf8
+        );
+
+        if (!info2x) {
+          console.log("data base64 not match when decrypt");
+        } else {
+          var paramValue = JSON.parse(info2x);
+          console.log(paramValue);
+          setUser(paramValue);
+          setP(checkP.query);
+          localStorage.setItem("data", JSON.stringify(paramValue));
+        }
+        if (!localStorage.getItem("data")) {
+          if (!paramValue.user_id) {
+            console.log("salah");
+            navigate("/not-found");
+          }
+        }
+      }
+    }
+  };
 
   return (
     <>
