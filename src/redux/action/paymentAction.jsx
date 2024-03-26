@@ -560,7 +560,13 @@ const badanHukumCreate =
       )
       .then((response) => {
         dispatch(setLoading(false));
-        navigate(`${urlNavigate}${response?.data?.detail?.id}`);
+
+        if (values.params) {
+          navigate(`${urlNavigate}${response?.data?.detail?.id}?query=${values.params}`);
+        } else {
+          navigate(`${urlNavigate}${response?.data?.detail?.id}`);
+        }
+
       })
       .catch((error) => {
         // console.log(error);
@@ -673,7 +679,6 @@ const paymentPageOthers = async (data) => (dispatch) => {
 
 const paymentPengamananKorporat =
   async (values, navigate, urlNavigate) => (dispatch) => {
-    console.log(values)
     dispatch(setLoading(true));
     axios
       .post(
@@ -683,7 +688,12 @@ const paymentPengamananKorporat =
       .then((response) => {
         // console.log(response);
         dispatch(setLoading(false));
-        navigate(`${urlNavigate}${response?.data?.detail?.id}`);
+
+        if (values.params) {
+          navigate(`${urlNavigate}${response?.data?.detail?.id}?query=${values.params}`);
+        } else {
+          navigate(`${urlNavigate}${response?.data?.detail?.id}`);
+        }
       })
       .catch((error) => {
         // console.log(error);
