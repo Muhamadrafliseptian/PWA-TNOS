@@ -30,10 +30,19 @@ import ModalComponent from "../../moleculars/ModalComponent";
 import KetentuanComponentNew from "../../moleculars/KetentuanComponentNew";
 import InputCheckboxComponent from "../../atoms/InputCheckboxComponent";
 import InputSelectComponent from "../../atoms/InputSelectComponent";
+import { decode as base64_decode } from "base-64";
+import { getParams } from "../../moleculars/GetParams";
+var CryptoJS = require("crypto-js");
+
+const secretKey = `${process.env.REACT_APP_SECRET_KEY}`;
 
 function BadanPerkumpulanMobile() {
   TitleHeader("Halaman Perkumpulan");
   const user = JSON.parse(localStorage.getItem("data"));
+  const [getP, setP] = useState(null);
+  const [usersData, setUser] = useState(
+    JSON.parse(localStorage.getItem("userInfo"))
+  );
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     accept: {
@@ -117,6 +126,7 @@ function BadanPerkumpulanMobile() {
 
   useEffect(() => {
     fetchAgent();
+    checkParams();
     fetchKelurahan(kec_id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [kec_id]);
@@ -169,6 +179,7 @@ function BadanPerkumpulanMobile() {
       alamat_badan_hukum: {},
       susunan_direksi: "",
       ketentuan_cek: false,
+      params: getP
     },
     onSubmit: async (values) => {
       values.name_badan_hukum = [
@@ -194,8 +205,7 @@ function BadanPerkumpulanMobile() {
         kelurahan: values.kelurahan,
         kode_pos: values.kode_pos,
       };
-
-      console.log(values);
+      
       dispatch(
         await badanHukumCreate(
           values,
@@ -212,6 +222,43 @@ function BadanPerkumpulanMobile() {
       {file.path} - {file.size} bytes
     </li>
   ));
+
+  const checkParams = () => {
+    let checkP = getParams(["query"]);
+
+    if (!checkP) {
+      console.log("params tidak ditemukan");
+    } else {
+      var base64regex =
+        /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
+      if (!base64regex.test(checkP.query)) {
+        console.log("data base64 tidak cocok");
+        navigate("/not-found");
+      } else {
+        let string = base64_decode(checkP.query);
+        let cryptdata = string;
+        const info2x = CryptoJS.AES.decrypt(cryptdata, secretKey).toString(
+          CryptoJS.enc.Utf8
+        );
+
+        if (!info2x) {
+          console.log("data base64 not match when decrypt");
+        } else {
+          var paramValue = JSON.parse(info2x);
+          console.log(paramValue);
+          setUser(paramValue);
+          setP(checkP.query);
+          localStorage.setItem("data", JSON.stringify(paramValue));
+        }
+        if (!localStorage.getItem("data")) {
+          if (!paramValue.user_id) {
+            console.log("salah");
+            navigate("/not-found");
+          }
+        }
+      }
+    }
+  };
 
   return (
     <>
