@@ -182,18 +182,19 @@ function DetailTransaksiMobile() {
             <div className="dashboard-container-f" style={{ marginTop: "0px" }}>
               {detail_data_layanan?.payment_status === "ORDER" ||
               detail_data_layanan?.payment_status === "UNPAID" ? (
-                <div className="container-ketentuan-f">
-                  <p>
-                    Dengan melakukan pemesanan, saya setuju dengan syarat dan
-                    ketentuan berikut:{" "}
-                    <span
-                      style={{ color: "#F99F1B", cursor: "pointer" }}
-                      onClick={() => setIsModalVisible(!isModalVisible)}
-                    >
-                      (Klik untuk membaca)
-                    </span>
-                  </p>
-                </div>
+                // <div className="container-ketentuan-f">
+                //   <p>
+                //     Dengan melakukan pemesanan, saya setuju dengan syarat dan
+                //     ketentuan berikut:{" "}
+                //     <span
+                //       style={{ color: "#F99F1B", cursor: "pointer" }}
+                //       onClick={() => setIsModalVisible(!isModalVisible)}
+                //     >
+                //       (Klik untuk membaca)
+                //     </span>
+                //   </p>
+                // </div>
+                ""
               ) : (
                 ""
               )}
