@@ -70,7 +70,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "set PORT=3006 --host && react-scripts start",
+    "start": "set PORT=3000 --host && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
