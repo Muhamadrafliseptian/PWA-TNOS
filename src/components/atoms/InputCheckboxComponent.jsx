@@ -32,7 +32,7 @@ function InputCheckboxComponent({
       case "badan-usaha-atau-hukum":
         return (
           <Iframe
-            url="https://tnosbantuan.freshdesk.com/support/solutions/articles/150000042266"
+            url="https://tnosbantuan.freshdesk.com/support/solutions/articles/150000043751-membatalkan-pesanan-komprehensif-solusi-hukum-"
             width="100%"
             height="100%"
             styles={{ minHeight: "100vh" }}
@@ -45,7 +45,7 @@ function InputCheckboxComponent({
       case "solusi-hukum":
         return (
           <Iframe
-            url="https://tnosbantuan.freshdesk.com/support/solutions/articles/150000043751-membatalkan-pesanan-csh-comprehensive-solusi-hukum-"
+            url="https://tnosbantuan.freshdesk.com/support/solutions/articles/150000043751-membatalkan-pesanan-komprehensif-solusi-hukum-"
             width="100%"
             height="100%"
             styles={{ minHeight: "100vh" }}
@@ -58,7 +58,7 @@ function InputCheckboxComponent({
       case "pembayaran-lainnya":
         return (
           <Iframe
-            url="https://tnosbantuan.freshdesk.com/support/solutions/articles/150000042230"
+            url="https://tnosbantuan.freshdesk.com/a/solutions/articles/150000177804"
             width="100%"
             height="100%"
             styles={{ minHeight: "100vh" }}
