@@ -39,6 +39,11 @@ const secretKey = `${process.env.REACT_APP_SECRET_KEY}`;
 
 function BadanYayasanMobile() {
   TitleHeader("Halaman Yayasan");
+
+  const [getP, setP] = useState(null);
+  const [usersData, setUser] = useState(
+    JSON.parse(localStorage.getItem("userInfo"))
+  );
   const user = JSON.parse(localStorage.getItem("data"));
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
@@ -108,6 +113,7 @@ function BadanYayasanMobile() {
 
   useEffect(() => {
     fetchProvinsi();
+    checkParams();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -218,6 +224,43 @@ function BadanYayasanMobile() {
       {file.path} - {file.size} bytes
     </li>
   ));
+
+  const checkParams = () => {
+    let checkP = getParams(["query"]);
+
+    if (!checkP) {
+      console.log("params tidak ditemukan");
+    } else {
+      var base64regex =
+        /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
+      if (!base64regex.test(checkP.query)) {
+        console.log("data base64 tidak cocok");
+        navigate("/not-found");
+      } else {
+        let string = base64_decode(checkP.query);
+        let cryptdata = string;
+        const info2x = CryptoJS.AES.decrypt(cryptdata, secretKey).toString(
+          CryptoJS.enc.Utf8
+        );
+
+        if (!info2x) {
+          console.log("data base64 not match when decrypt");
+        } else {
+          var paramValue = JSON.parse(info2x);
+          console.log(paramValue);
+          setUser(paramValue);
+          setP(checkP.query);
+          localStorage.setItem("data", JSON.stringify(paramValue));
+        }
+        if (!localStorage.getItem("data")) {
+          if (!paramValue.user_id) {
+            console.log("salah");
+            navigate("/not-found");
+          }
+        }
+      }
+    }
+  };
 
   return (
     <>
