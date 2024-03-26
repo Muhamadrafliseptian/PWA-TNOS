@@ -25,7 +25,7 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import moment from "moment-timezone";
 import moment_datetime from "moment";
-import 'moment/min/locales.min';
+import "moment/min/locales.min";
 import TextError from "../../atoms/TextError";
 import { paymentPengamananKorporat } from "../../../redux/action/paymentAction";
 import TitleHeader from "../../utils/TitleHeader";
@@ -34,17 +34,21 @@ import { t } from "i18next";
 import PAS from "../../../assets/images/PAS.svg";
 import Trigger from "../../../assets/images/TRIGGER.svg";
 import InputComponent from "../../atoms/InputComponent.jsx";
-import Select from 'react-select';
+import Select from "react-select";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const formSchema = Yup.object({
-  keperluan_pengamanan: Yup.string().required("Keperluan Pengamanan Usaha wajib di isi"),
+  keperluan_pengamanan: Yup.string().required(
+    "Keperluan Pengamanan Usaha wajib di isi"
+  ),
   location: Yup.string().required("Lokasi wajib di isi"),
   ketentuan_cek: Yup.boolean().oneOf([true], "Ketentuan wajib di isi"),
   nama_pic: Yup.string().required("Nama PIC wajib di isi"),
-  nomor_pic: Yup.string().matches(phoneRegExp, "Nomor PIC tidak valid").required("Nomor PIC wajib di isi")
+  nomor_pic: Yup.string()
+    .matches(phoneRegExp, "Nomor PIC tidak valid")
+    .required("Nomor PIC wajib di isi"),
   // err1: Yup.boolean(),
   // validation1: Yup
   //   .string()
@@ -73,7 +77,9 @@ function PengamananKorporat() {
   const newDate = new Date(new Date());
   const [tanggal, setTanggal] = useState(
     // searchParams?.mitra === "PAS" ? newDate.setDate(newDate.getDate() + 7) : newDate.setDate(newDate.getDate() + 3)
-    searchParams?.mitra === "PAS" ? newDate.setDate(newDate.getDate()) : newDate.setDate(newDate.getDate() + 3)
+    searchParams?.mitra === "PAS"
+      ? newDate.setDate(newDate.getDate())
+      : newDate.setDate(newDate.getDate() + 3)
   );
   const [time, setTime] = useState(moment().format("HH:mm"));
   const [jarak, setJarak] = useState(0);
@@ -89,23 +95,23 @@ function PengamananKorporat() {
     initialCategory = [
       {
         id: 12,
-        label: "Half day (12 Jam)"
+        label: "Half day (12 Jam)",
       },
       {
         id: 8,
-        label: "Full day (8 Jam)"
-      }
+        label: "Full day (8 Jam)",
+      },
     ];
   } else if (searchParams?.mitra === "Triger") {
     initialCategory = [
       {
         id: 4,
-        label: "Half day (4 Jam)"
+        label: "Half day (4 Jam)",
       },
       {
         id: 8,
-        label: "Full day (8 Jam)"
-      }
+        label: "Full day (8 Jam)",
+      },
     ];
   }
 
@@ -113,13 +119,13 @@ function PengamananKorporat() {
 
   const [allBiayaSurvey, setAllBiayaSurvey] = useState([
     {
-      id: '1',
-      label: "Ya"
+      id: "1",
+      label: "Ya",
     },
     {
-      id: '0',
-      label: "Tidak"
-    }
+      id: "0",
+      label: "Tidak",
+    },
   ]);
 
   const [center, setCenter] = useState({});
@@ -152,62 +158,71 @@ function PengamananKorporat() {
   moment_datetime.locale(localStorage.getItem("language"));
 
   useEffect(() => {
-
     let timed = moment_datetime(time, "HH:mm");
 
     if (searchParams?.mitra === "PAS") {
-
-      if (timed.isBefore(moment_datetime("19:00", "HH:mm")) && timed.isAfter(moment_datetime("06:59", "HH:mm"))) {
+      if (
+        timed.isBefore(moment_datetime("19:00", "HH:mm")) &&
+        timed.isAfter(moment_datetime("06:59", "HH:mm"))
+      ) {
         setAllCategory([
           {
             id: 8,
-            label: "8 Jam"
+            label: "8 Jam",
           },
           {
             id: 12,
-            label: "12 Jam"
-          }
-        ])
+            label: "12 Jam",
+          },
+        ]);
         setDuration(4);
       } else {
-        setAllCategory([{
-          id: 8,
-          label: "8 Jam"
-        }])
-        setDefaultDuration([{
-          id: 8,
-          label: "8 Jam"
-        }])
+        setAllCategory([
+          {
+            id: 8,
+            label: "8 Jam",
+          },
+        ]);
+        setDefaultDuration([
+          {
+            id: 8,
+            label: "8 Jam",
+          },
+        ]);
         setDuration(8);
       }
-    }
-    else if (searchParams?.mitra === "Trigger") {
-
-      if (timed.isAfter(moment_datetime("00:29", "HH:mm")) && timed.isBefore(moment_datetime("06:00", "HH:mm"))) {
-        setAllCategory([{
-          id: 8,
-          label: "8 Jam"
-        }])
-        setDefaultDuration([{
-          id: 8,
-          label: "8 Jam"
-        }])
+    } else if (searchParams?.mitra === "Trigger") {
+      if (
+        timed.isAfter(moment_datetime("00:29", "HH:mm")) &&
+        timed.isBefore(moment_datetime("06:00", "HH:mm"))
+      ) {
+        setAllCategory([
+          {
+            id: 8,
+            label: "8 Jam",
+          },
+        ]);
+        setDefaultDuration([
+          {
+            id: 8,
+            label: "8 Jam",
+          },
+        ]);
         setDuration(8);
       } else {
         setAllCategory([
           {
             id: 8,
-            label: "8 Jam"
+            label: "8 Jam",
           },
           {
             id: 4,
-            label: "4 Jam"
-          }
-        ])
+            label: "4 Jam",
+          },
+        ]);
         setDuration(4);
       }
     }
-
   }, [time]);
 
   const formik = useFormik({
@@ -233,7 +248,7 @@ function PengamananKorporat() {
       // err1: false,
       // err2: false,
       // err3: false,
-      biaya_survey: ""
+      biaya_survey: "",
     },
 
     onSubmit: async (values) => {
@@ -259,41 +274,42 @@ function PengamananKorporat() {
   function validDate() {
     const dtanggalm = moment(tanggal);
     const dtanggals = moment();
-    const diffdays = (dtanggalm.diff(dtanggals, 'days')) + 1;
+    const diffdays = dtanggalm.diff(dtanggals, "days") + 1;
 
     if (searchParams?.mitra === "Trigger") {
-      if (diffdays < 3 && (personel >= 3 && personel <= 5)) {
+      if (diffdays < 3 && personel >= 3 && personel <= 5) {
         setErr1({
           iserr: true,
-          message: "3 s/d 5 tenaga pengamanan dapat dipesan 3 hari sebelum acara dimulai"
-        })
-      } else if (diffdays < 5 && (personel >= 6 && personel <= 10)) {
+          message:
+            "3 s/d 5 tenaga pengamanan dapat dipesan 3 hari sebelum acara dimulai",
+        });
+      } else if (diffdays < 5 && personel >= 6 && personel <= 10) {
         setErr1({
           iserr: true,
-          message: "5 s/d 10 tenaga pengamanan dapat dipesan 5 hari sebelum acara dimulai"
-        })
+          message:
+            "5 s/d 10 tenaga pengamanan dapat dipesan 5 hari sebelum acara dimulai",
+        });
       } else if (diffdays < 7 && personel > 10) {
         setErr1({
           iserr: true,
-          message: "Lebih dari 10 tenaga pengamanan dapat dipesan 7 hari sebelum acara dimulai"
-        })
+          message:
+            "Lebih dari 10 tenaga pengamanan dapat dipesan 7 hari sebelum acara dimulai",
+        });
       } else {
-        setErr1({ iserr: false })
+        setErr1({ iserr: false });
       }
     }
-
   }
   useEffect(() => {
     validDate();
-  }, [personel, tanggal])
+  }, [personel, tanggal]);
   // modal
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   function hitungJarak(lat1, long1, lat2, long2) {
-
-    const toRadian = n => (n * Math.PI) / 180
+    const toRadian = (n) => (n * Math.PI) / 180;
 
     let R = 6371;
     let x1 = lat2 - lat1;
@@ -302,7 +318,10 @@ function PengamananKorporat() {
     let dLon = toRadian(x2);
     let a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(toRadian(lat1)) * Math.cos(toRadian(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      Math.cos(toRadian(lat1)) *
+        Math.cos(toRadian(lat2)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
     let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     let d = R * c;
     return Math.round(d);
@@ -411,9 +430,13 @@ function PengamananKorporat() {
         });
         setLocation(destinationRef.current.value);
         if (searchParams?.mitra === "PAS") {
-          setJarak(hitungJarak(-6.228663580230741, 106.7198173824197, lat, lng));
+          setJarak(
+            hitungJarak(-6.228663580230741, 106.7198173824197, lat, lng)
+          );
         } else {
-          setJarak(hitungJarak(-6.32243985038034, 106.84738076294884, lat, lng));
+          setJarak(
+            hitungJarak(-6.32243985038034, 106.84738076294884, lat, lng)
+          );
         }
         dispatch(setLoading(false));
         showMessage("Select a location successfully");
@@ -430,31 +453,45 @@ function PengamananKorporat() {
 
   return (
     <>
-      <TopNewNav title={t("Pengamanan Usaha & Bisnis")} path={`/services-list/${searchParams.mitra}`} />
+      <TopNewNav
+        title={t("Pengamanan Usaha & Bisnis")}
+        path={`/services-list/${searchParams.mitra}`}
+      />
       <div className="container-class">
         <div className="responsive-class">
           <div className="res-class">
             <div className="payment-container">
               <div className="payment-content">
                 <div className="container-layanan-f">
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '20px', margin: '12px 6px 12px 6px' }} >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "20px",
+                      margin: "12px 6px 12px 6px",
+                    }}
+                  >
                     <img
                       src={searchParams?.mitra === "PAS" ? Trigger : PAS}
                       alt={searchParams?.mitra === "PAS" ? "Trigger" : "PAS"}
                     />
-                    <span style={{ fontWeight: 'bold' }} >
+                    <span style={{ fontWeight: "bold" }}>
                       {searchParams?.mitra === "PAS" ? "PAS" : "TRIGER"}
                     </span>
                   </div>
                   <div className="mb-2 form-group">
-                    <div style={{ display: 'flex', flexDirection: 'row' }} ><LabelComponent label={"Keperluan Pengamanan Untuk"} /> <span style={{ color: 'red' }}>*</span></div>
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <LabelComponent label={"Keperluan Pengamanan Untuk"} />{" "}
+                      <span style={{ color: "red" }}>*</span>
+                    </div>
                     <InputComponent
                       value={formik.values.keperluan_pengamanan}
                       onChange={formik.handleChange("keperluan_pengamanan")}
                       onBlur={formik.handleBlur("keperluan_pengamanan")}
                       placeholder={"Masukkan Keperluan Pengamanan Badan Usaha"}
                     />
-                    {formik.errors.keperluan_pengamanan && formik.touched.keperluan_pengamanan ? (
+                    {formik.errors.keperluan_pengamanan &&
+                    formik.touched.keperluan_pengamanan ? (
                       <TextError error={formik.errors.keperluan_pengamanan} />
                     ) : (
                       ""
@@ -486,7 +523,8 @@ function PengamananKorporat() {
                               </>
                             )}
                             )
-                          </span><span style={{ color: 'red' }}>*</span>
+                          </span>
+                          <span style={{ color: "red" }}>*</span>
                         </div>
                       }
                     />
@@ -504,7 +542,10 @@ function PengamananKorporat() {
                     )}
                   </div>
                   <div className="mb-2 form-group">
-                    <div style={{ display: 'flex', flexDirection: 'row' }} ><LabelComponent label={"Nama Penanggung Jawab"} /> <span style={{ color: 'red' }}>*</span></div>
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <LabelComponent label={"Nama Penanggung Jawab"} />{" "}
+                      <span style={{ color: "red" }}>*</span>
+                    </div>
                     <InputComponent
                       value={formik.values.nama_pic}
                       onChange={formik.handleChange("nama_pic")}
@@ -518,7 +559,10 @@ function PengamananKorporat() {
                     )}
                   </div>
                   <div className="mb-2 form-group">
-                    <div style={{ display: 'flex', flexDirection: 'row' }} ><LabelComponent label={"No HP Penanggung Jawab"} /> <span style={{ color: 'red' }}>*</span></div>
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <LabelComponent label={"No HP Penanggung Jawab"} />{" "}
+                      <span style={{ color: "red" }}>*</span>
+                    </div>
                     <InputComponent
                       value={formik.values.nomor_pic}
                       onChange={formik.handleChange("nomor_pic")}
@@ -542,11 +586,7 @@ function PengamananKorporat() {
                           style={{ padding: "0.6rem" }}
                           minDateNumber={searchParams?.mitra === "PAS" ? 7 : 3}
                         />
-                        {err1?.iserr ? (
-                          <TextError error={err1?.message} />
-                        ) : (
-                          ""
-                        )}
+                        {err1?.iserr ? <TextError error={err1?.message} /> : ""}
                       </div>
                       <Gap height={10} />
                     </div>
@@ -582,8 +622,13 @@ function PengamananKorporat() {
                           <LabelComponent label={t("Technical Meeting")} />
                           <Select
                             getOptionValue={(option) => option.id}
-                            onChange={(option) => formik.setFieldValue("biaya_survey", option.id)}
-                            defaultValue={allBiayaSurvey.find(option => option.id === formik.values.biaya_survey)}
+                            onChange={(option) =>
+                              formik.setFieldValue("biaya_survey", option.id)
+                            }
+                            defaultValue={allBiayaSurvey.find(
+                              (option) =>
+                                option.id === formik.values.biaya_survey
+                            )}
                             isDisabled={false}
                             isLoading={false}
                             isClearable={false}
@@ -594,7 +639,9 @@ function PengamananKorporat() {
                           />
                         </div>
                       </div>
-                    ) : ""}
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <div className="col-6">
                     <div className="mb-2 form-group">
@@ -604,7 +651,7 @@ function PengamananKorporat() {
                         setValue={setPersonel}
                         minValue={3}
                         addValue={1}
-                      // maxValue={12}
+                        // maxValue={12}
                       />
                     </div>
                   </div>
@@ -619,7 +666,7 @@ function PengamananKorporat() {
                       typeLayanan="pengamanan"
                     />
                     {formik.errors.ketentuan_cek &&
-                      formik.touched.ketentuan_cek ? (
+                    formik.touched.ketentuan_cek ? (
                       <TextError error={formik.errors.ketentuan_cek} />
                     ) : (
                       ""
@@ -632,7 +679,7 @@ function PengamananKorporat() {
                   disabled={err1?.iserr}
                   onClick={formik.handleSubmit}
                   type="button"
-                // onClick={() => handlePayment()}
+                  // onClick={() => handlePayment()}
                 />
               </div>
             </div>
