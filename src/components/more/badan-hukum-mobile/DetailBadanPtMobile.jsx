@@ -131,7 +131,7 @@ function DetailBadanPtMobile() {
         <div className="responsive-class">
           <div className="res-class">
             <div className="dashboard-container-f" style={{ marginTop: "0px" }}>
-              <div className="container-ketentuan-f">
+              {/* <div className="container-ketentuan-f">
                 <p>
                   Dengan melakukan pemesanan, saya setuju dengan syarat dan
                   ketentuan berikut:{" "}
@@ -142,7 +142,7 @@ function DetailBadanPtMobile() {
                     (Klik untuk membaca)
                   </span>
                 </p>
-              </div>
+              </div> */}
               <PaddingPwa padding={15}>
                 <HeaderCheckoutLayanan
                   layanan={getNameLayanan(
