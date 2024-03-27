@@ -35,58 +35,58 @@ function Dashboard() {
             </div>
             <div className="dashboard-container-f">
               <PaddingPwa padding={15}>
-              <center>
-                    <div className="row">
-                    <div className="col-md-6">
-                        <div
-                          className="container-card-f-f"
-                          onClick={() => navigate("/security-providers")}
-                        >
-                          <div className="card-dashboard-fkf">
-                            <img src={pengamanan} alt="" />
-                          </div>
-                          <div className="title">{t("layanan2")}</div>
+                <center>
+                  <div className="row">
+                    <div className="col-6">
+                      <div
+                        className="container-card-f-f"
+                        onClick={() => navigate("/security-providers")}
+                      >
+                        <div className="card-dashboard-fkf">
+                          <img src={pengamanan} alt="" />
                         </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div
-                          className="container-card-f-f"
-                          onClick={() =>
-                            navigate("/comprehensive-Legal-solutions")
-                          }
-                        >
-                          <div className="card-dashboard-fkf">
-                            <img src={comprehensive} alt="" />
-                          </div>
-                          <div className="title">{t("layanan3")}</div>
-                        </div>
+                        <div className="title">{t("layanan2")}</div>
                       </div>
                     </div>
-                    <div className="row mt-3">
-                    <div className="col-md-6">
-                        <div
-                          className="container-card-f-f"
-                          onClick={() => navigate("/business-or-legal-entity")}
-                        >
-                          <div className="card-dashboard-fkf">
-                            <img src={legalitas} alt="" />
-                          </div>
-                          <div className="title">{t("layanan1")}</div>
+                    <div className="col-6">
+                      <div
+                        className="container-card-f-f"
+                        onClick={() =>
+                          navigate("/comprehensive-Legal-solutions")
+                        }
+                      >
+                        <div className="card-dashboard-fkf">
+                          <img src={comprehensive} alt="" />
                         </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div
-                          className="container-card-f-f"
-                          onClick={() => navigate("/pembayaran-lainnya")}
-                        >
-                          <div className="card-dashboard-fkf">
-                            <img src={lainnya} alt="" style={{width: '69px'}} />
-                          </div>
-                          <div className="title">{t("Pembayaran Lainnya")}</div>
-                        </div>
+                        <div className="title">{t("layanan3")}</div>
                       </div>
                     </div>
-                  </center>
+                  </div>
+                  <div className="row mt-3">
+                    <div className="col-6">
+                      <div
+                        className="container-card-f-f"
+                        onClick={() => navigate("/business-or-legal-entity")}
+                      >
+                        <div className="card-dashboard-fkf">
+                          <img src={legalitas} alt="" />
+                        </div>
+                        <div className="title">{t("layanan1")}</div>
+                      </div>
+                    </div>
+                    <div className="col-6">
+                      <div
+                        className="container-card-f-f"
+                        onClick={() => navigate("/pembayaran-lainnya")}
+                      >
+                        <div className="card-dashboard-fkf">
+                          <img src={lainnya} alt="" style={{ width: "69px" }} />
+                        </div>
+                        <div className="title">{t("Pembayaran Lainnya")}</div>
+                      </div>
+                    </div>
+                  </div>
+                </center>
               </PaddingPwa>
               <Gap height={70} />
               <NavigateButtomNew />
