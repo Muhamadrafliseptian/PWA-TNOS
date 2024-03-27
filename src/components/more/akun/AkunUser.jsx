@@ -97,7 +97,10 @@ function AkunUser() {
                   </div>
                   <div className="title">{t("account2")}</div>
                 </div>
-                <div className="menu-akun-f-fwd">
+                <div 
+                  className="menu-akun-f-fwd"
+                  onClick={() => (window.location.href = 'https://tnos.co.id/artikel')}
+                >
                   <div className="icon-jf">
                     <img src={artikel} alt="" />
                   </div>
