@@ -18,6 +18,7 @@ const secretKey = `${process.env.REACT_APP_SECRET_KEY}`;
 function ContentDetailCheckout({ layanan, data }) {
   const params = useParams();
   
+  const [getP, setP] = useState(null);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("data")));
   const navigate = useNavigate();
 
@@ -45,6 +46,7 @@ function ContentDetailCheckout({ layanan, data }) {
           var paramValue = JSON.parse(info2x);
           console.log(paramValue.id);
           setUser(paramValue);
+          setP(checkP.query);
           localStorage.setItem("data", JSON.stringify(paramValue));
         }
         if (!localStorage.getItem("data")) {
@@ -58,7 +60,9 @@ function ContentDetailCheckout({ layanan, data }) {
   };
 
   useEffect(() => {
-    checkParams();
+    if (getP != null) {
+      checkParams();
+    }
   }, []);
 
   const name_opsi = data?.name_badan_hukum
@@ -950,7 +954,7 @@ function ContentDetailCheckout({ layanan, data }) {
             </div>
           </>
         );
-      case t("Triger_Pengamanan_Bisnis"):
+      case t("partner2"):
         return (
           <>
             <div>
@@ -1046,7 +1050,7 @@ function ContentDetailCheckout({ layanan, data }) {
             </div>
           </>
         );
-      case t("Pembayaran Lainnya"):
+      case t("layanan7"):
         return (
           <>
             <div>
@@ -1092,7 +1096,7 @@ function ContentDetailCheckout({ layanan, data }) {
             <Gap height={15} />
 
             <div>
-              <CheckoutHeader image={user} title="Rincian Pembayaran" alt="" />
+              <CheckoutHeader image={users} title="Rincian Pembayaran" alt="" />
               {data?.payment_status !== "EXPIRED"
                 ? data?.paid_at && (
                     <CheckoutValue
