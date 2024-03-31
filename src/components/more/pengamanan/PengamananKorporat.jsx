@@ -91,7 +91,7 @@ function PengamananKorporat() {
 
   let initialCategory = [];
 
-  if (searchParams?.mitra === "PAS") {
+  if (searchParams?.mitra === t("partner1")) {
     initialCategory = [
       {
         id: 12,
@@ -102,7 +102,7 @@ function PengamananKorporat() {
         label: "Full day (8 Jam)",
       },
     ];
-  } else if (searchParams?.mitra === "Triger") {
+  } else if (searchParams?.mitra === t("partner2")) {
     initialCategory = [
       {
         id: 4,
@@ -160,7 +160,7 @@ function PengamananKorporat() {
   useEffect(() => {
     let timed = moment_datetime(time, "HH:mm");
 
-    if (searchParams?.mitra === "PAS") {
+    if (searchParams?.mitra === t("partner1")) {
       if (
         timed.isBefore(moment_datetime("19:00", "HH:mm")) &&
         timed.isAfter(moment_datetime("06:59", "HH:mm"))
@@ -191,7 +191,7 @@ function PengamananKorporat() {
         ]);
         setDuration(8);
       }
-    } else if (searchParams?.mitra === "Trigger") {
+    } else if (searchParams?.mitra === t("partner2")) {
       if (
         timed.isAfter(moment_datetime("00:29", "HH:mm")) &&
         timed.isBefore(moment_datetime("06:00", "HH:mm"))
@@ -230,7 +230,7 @@ function PengamananKorporat() {
     initialValues: {
       tnos_service_id: searchParams?.mitra === "PAS" ? "4" : "5",
       tnos_subservice_id: "1",
-      type: searchParams?.mitra === "PAS" ? "PAS" : "Triger",
+      type: searchParams?.mitra === "PAS" ? t("partner1") : t("partner2"),
       keperluan_pengamanan: "",
       user_id: user.mmbr_code,
       name: user.mmbr_name,
@@ -276,7 +276,7 @@ function PengamananKorporat() {
     const dtanggals = moment();
     const diffdays = dtanggalm.diff(dtanggals, "days") + 1;
 
-    if (searchParams?.mitra === "Trigger") {
+    if (searchParams?.mitra === t("partner2")) {
       if (diffdays < 3 && personel >= 3 && personel <= 5) {
         setErr1({
           iserr: true,
@@ -472,11 +472,11 @@ function PengamananKorporat() {
                     }}
                   >
                     <img
-                      src={searchParams?.mitra === "PAS" ? Trigger : PAS}
-                      alt={searchParams?.mitra === "PAS" ? "Trigger" : "PAS"}
+                      src={searchParams?.mitra === t("partner1") ? Trigger : PAS}
+                      alt={searchParams?.mitra === t("partner1") ? "Trigger" : t("partner1")}
                     />
                     <span style={{ fontWeight: "bold" }}>
-                      {searchParams?.mitra === "PAS" ? "PAS" : "TRIGER"}
+                      {searchParams?.mitra === t("partner1") ? t("partner1") : t("partner2")}
                     </span>
                   </div>
                   <div className="mb-2 form-group">
