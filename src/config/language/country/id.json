@@ -8,6 +8,7 @@
   "layanan4": "Konsultasi Hukum Via Video Call",
   "layanan5": "Pendampingan Hukum",
   "layanan6": "Pengamanan Pribadi",
+  "layanan7": "Pembayaran Lainnya",
 
   "sublayanan1": "Badan Hukum PT",
   "sublayanan2": "Badan Usaha CV",
@@ -80,5 +81,11 @@
   "guard4": "Durasi Pesanan",
   "guard5": "Jumlah Pengaman",
   "guard6": "Rincian Lokasi",
-  "guard7": "Lanjutkan Pembayaran"
+  "guard7": "Lanjutkan Pembayaran",
+
+  "partner1": "PAS",
+  "partner2": "TRIGGER",
+  "partner3": "Vendor Lainnya",
+
+  "ID_ENG_PEMBAYARAN_LAINNYA": "Pembayaran Lainnya"
 }
