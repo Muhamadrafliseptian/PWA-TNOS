@@ -145,7 +145,7 @@ function PengamananKorporatMobileD() {
         label: "Full day (8 Jam)",
       },
     ];
-  } else if (searchParams?.mitra === "Triger") {
+  } else if (searchParams?.mitra === t("partner2")) {
     initialCategory = [
       {
         id: 4,
@@ -203,7 +203,7 @@ function PengamananKorporatMobileD() {
         ]);
         setDuration(8);
       }
-    } else if (searchParams?.mitra === "Trigger") {
+    } else if (searchParams?.mitra === t("partner2")) {
       if (
         timed.isAfter(moment_datetime("00:29", "HH:mm")) &&
         timed.isBefore(moment_datetime("06:00", "HH:mm"))
@@ -240,9 +240,9 @@ function PengamananKorporatMobileD() {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      tnos_service_id: searchParams?.mitra === "PAS" ? "4" : "5",
+      tnos_service_id: searchParams?.mitra === t("partner1") ? "4" : "5",
       tnos_subservice_id: "1",
-      type: searchParams?.mitra === "PAS" ? "PAS" : "Triger",
+      type: searchParams?.mitra === "PAS" ? t("partner1") : t("partner2"),
       keperluan_pengamanan: "",
       user_id: user.user_id,
       name: user.name,
@@ -520,11 +520,11 @@ function PengamananKorporatMobileD() {
                     }}
                   >
                     <img
-                      src={searchParams?.mitra === "PAS" ? Trigger : PAS}
-                      alt={searchParams?.mitra === "PAS" ? "Trigger" : "PAS"}
+                      src={searchParams?.mitra === t("partner1") ? Trigger : PAS}
+                      alt={searchParams?.mitra === t("partner1") ? t("partner2") : t("partner1")}
                     />
                     <span style={{ fontWeight: "bold" }}>
-                      {searchParams?.mitra === "PAS" ? "PAS" : "TRIGER"}
+                      {searchParams?.mitra === t("partner1") ? t("partner1") : t("partner2")}
                     </span>
                   </div>
                   <div className="mb-2 form-group">
@@ -664,7 +664,7 @@ function PengamananKorporatMobileD() {
                         />
                       </div>
                     </div>
-                    {searchParams?.mitra === "PAS" ? (
+                    {searchParams?.mitra === t("partner1") ? (
                       <div className="col-6">
                         <div className="mb-2 form-group">
                           <LabelComponent label={t("Technical Meeting")} />

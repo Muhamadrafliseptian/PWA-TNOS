@@ -8,31 +8,79 @@ import Lainnya from "../../assets/images/new pwa icon/dashboard/iconPembayaranLa
 function HeaderCheckoutLayanan({ layanan, payment_status }) {
   const renderStatusOrder = () => {
     switch (payment_status) {
-      case "RUN":
+      case "001":
         return (
           <ContentTitleValue
             type="waiting"
             title="Status Order:"
-            value="Sedang Diproses"
+            value="Menunggu"
           />
         );
-      case "WAIT":
+      case "002":
         return (
           <ContentTitleValue
             type="waiting"
             title="Status Order:"
-            value="Menunggu Pembayaran"
+            value="Order Diproses"
           />
         );
-      case "START":
+      case "003":
         return (
           <ContentTitleValue
             type="success"
             title="Status Order:"
-            value="Siap Bertugas"
+            value="Mendapatkan Mitra"
           />
         );
-      case "FINISH":
+      case "004":
+        return (
+          <ContentTitleValue
+            type="success"
+            title="Status Order:"
+            value="Menuju Lokasi"
+          />
+        );
+      case "005":
+        return (
+          <ContentTitleValue
+            type="success"
+            title="Status Order:"
+            value="Hadir dan Sedang Bertugas"
+          />
+        );
+      case "006":
+        return (
+          <ContentTitleValue
+            type="waiting"
+            title="Status Order:"
+            value="Cek Dokumen"
+          />
+        );
+      case "007":
+        return (
+          <ContentTitleValue
+            type="waiting"
+            title="Status Order:"
+            value="Registrasi Dokumen"
+          />
+        );
+      case "008":
+        return (
+          <ContentTitleValue
+            type="success"
+            title="Status Order:"
+            value="Registrasi Selesai"
+          />
+        );
+      case "009":
+        return (
+          <ContentTitleValue
+            type="success"
+            title="Status Order:"
+            value="Penyerahan Dokumen"
+          />
+        );
+      case "010":
         return (
           <ContentTitleValue
             type="success"
@@ -56,7 +104,7 @@ function HeaderCheckoutLayanan({ layanan, payment_status }) {
       <img
         src={icon(layanan)}
         alt="not internet connection"
-        style={layanan == t("layanan7") ? {width: "50px"} : {  }}
+        style={layanan == t("layanan7") ? { width: "50px" } : {}}
       />
       <div className="content-detail">
         <div className="title-f">{layanan}</div>

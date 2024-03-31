@@ -58,6 +58,7 @@ function RiwayatTransaksi() {
       renderData = !layananId
         ? list_history_by_user &&
           list_history_by_user?.map((row, key) => {
+            console.log(row);
             const width = row?.tnos_service_id == 3 && row?.tnos_subservice_id == 8 ? { width: '55px' } : {width: ''};
             return (
               <div
@@ -90,7 +91,7 @@ function RiwayatTransaksi() {
                     value={getStatusPayment(row.payment_status)}
                   />
                   <ContentTitleValue
-                    type={row.status_order == "WAIT" ? 'menunggu' : row.status_order == "RUN" ? "waiting" : "success" }
+                    type={row.status_order == "001" ? 'menunggu' : row.status_order == "RUN" ? "waiting" : "success" }
                     title={`${t("history9")}:`}
                     value={getStatusOrder(row.status_order)}
                   />

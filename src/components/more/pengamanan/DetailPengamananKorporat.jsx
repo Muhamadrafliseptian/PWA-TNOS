@@ -26,7 +26,7 @@ function DetailPengamananKorporat() {
   const dispatch = useDispatch();
   const storeData = useSelector((store) => store?.global);
   const { detail_data_layanan, isError, message } = storeData;
-
+  
   useEffect(() => {
     getData();
     // eslint-disable-next-line react-hooks/exhaustive-deps

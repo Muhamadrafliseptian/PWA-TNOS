@@ -473,7 +473,7 @@ function PengamananKorporat() {
                   >
                     <img
                       src={searchParams?.mitra === t("partner1") ? Trigger : PAS}
-                      alt={searchParams?.mitra === t("partner1") ? "Trigger" : t("partner1")}
+                      alt={searchParams?.mitra === t("partner1") ? t("partner1") : t("partner2")}
                     />
                     <span style={{ fontWeight: "bold" }}>
                       {searchParams?.mitra === t("partner1") ? t("partner1") : t("partner2")}

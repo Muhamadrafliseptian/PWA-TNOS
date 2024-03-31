@@ -28,7 +28,7 @@ const getNameLayanan = (tnos_service_id, tnos_subservice_id) => {
   } else if (tnos_service_id === "3" && tnos_subservice_id === "8" ) {
     name = t("layanan7");
   } else if (tnos_service_id === "4" && tnos_subservice_id === "1") {
-    name = t("PAS_Pengamanan_Bisnis");
+    name = t("partner1");
   } else if (tnos_service_id === "5" && tnos_subservice_id === "1") {
     name = t("partner2");
   } else {
@@ -67,26 +67,26 @@ const getTypeStatusPayment = (payment_status) => {
 
 const getStatusOrder = (status_order) => {
   let name = "";
-  if (status_order === "WAIT") {
-    name = "Menunggu Pembayaran"
-  } else if (status_order === "RUN") {
-    name = "Sedang Diproses"
-  } else if (status_order === "START") {
-    name = "Siap Bertugas"
-  } else if (status_order === "AKTA") {
-    name = "Proses Pembuatan Akta"
-  } else if (status_order === "SKMENKUMHAM") {
-    name = "Proses SKMENKUMHAM"
-  } else if (status_order === "NPWP") {
-    name = "Proses NPWP"
-  } else if (status_order === "NIB") {
-    name = "Proses NIB"
-  } else if (status_order === "WORK") {
-    name = "Sedang Bertugas"
-  } else if (status_order === "FINISH") {
+  if (status_order === "001") {
+    name = "Menunggu"
+  } else if (status_order === "002") {
+    name = "Order diproses"
+  } else if (status_order === "003") {
+    name = "Mendapatkan Mitra"
+  } else if (status_order === "004") {
+    name = "Menuju lokasi"
+  } else if (status_order === "005") {
+    name = "Hadir dan Sedang Bertugas"
+  } else if (status_order === "006") {
+    name = "Cek Dokumen"
+  } else if (status_order === "007") {
+    name = "Registrasi Dokumen"
+  } else if (status_order === "008") {
+    name = "Registrasi Selesai"
+  } else if (status_order === "009") {
+    name = "Penyerahan Dokumen"
+  } else if (status_order === "010") {
     name = "Selesai"
-  } else if (status_order === "WORK") {
-    name = "Sedang Bertugas"
   } else {
     name = "Gagal"
   }

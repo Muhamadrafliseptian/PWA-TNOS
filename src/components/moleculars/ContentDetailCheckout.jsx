@@ -838,7 +838,7 @@ function ContentDetailCheckout({ layanan, data }) {
             </div>
           </>
         );
-      case t("PAS_Pengamanan_Bisnis"):
+      case t("partner1"):
         return (
           <>
             <div>
