@@ -23,11 +23,11 @@ const icon = (layanan) => {
       return pengamanan;
     case t("sublayanan7"):
       return solusi_hukum;
-    case t("PAS_Pengamanan_Bisnis"):
+    case t("partner1"):
       return PAS;
-    case t("Triger_Pengamanan_Bisnis"):
+    case t("partner2"):
       return TRIGER
-    case t("Pembayaran Lainnya"):
+    case t("layanan7"):
       return Lainnya
     default:
       return;
