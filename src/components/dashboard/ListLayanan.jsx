@@ -22,7 +22,7 @@ function ListLayanan() {
         <div className="responsive-class">
           <div className="res-class">
             <div className="flexcol">
-                { searchParams?.mitra === "Trigger" ?
+                { searchParams?.mitra === t("partner2") ?
                   <div className="flexbox">
                    <div style={{ display: 'flex', flexDirection: 'row' }}>
                      <img src={PAS} alt="pas" style={{ width: '60px', height: '60px', padding:'4px', backgroundColor:'white', borderRadius:'8px' }}/>
