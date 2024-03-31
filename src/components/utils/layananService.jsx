@@ -1,7 +1,6 @@
 import { t } from "i18next";
 
 const getNameLayanan = (tnos_service_id, tnos_subservice_id) => {
-  console.log(tnos_service_id + " " + tnos_subservice_id);
   let name = "";
 
   if (tnos_service_id === "1" && tnos_subservice_id === "1") {
@@ -27,11 +26,11 @@ const getNameLayanan = (tnos_service_id, tnos_subservice_id) => {
   } else if (tnos_service_id === "3" && tnos_subservice_id === "7") {
     name = t("sublayanan7");
   } else if (tnos_service_id === "3" && tnos_subservice_id === "8" ) {
-    name = t("Pembayaran Lainnya");
+    name = t("layanan7");
   } else if (tnos_service_id === "4" && tnos_subservice_id === "1") {
     name = t("PAS_Pengamanan_Bisnis");
   } else if (tnos_service_id === "5" && tnos_subservice_id === "1") {
-    name = t("Triger_Pengamanan_Bisnis");
+    name = t("partner2");
   } else {
     name = "tidak ada";
   }
