@@ -12,9 +12,10 @@ import { badanHukumCreate } from "../../../redux/action/paymentAction";
 import TitleHeader from "../../utils/TitleHeader";
 import TextError from "../../atoms/TextError";
 import InputCheckboxComponent from "../../atoms/InputCheckboxComponent";
+import { t } from "i18next";
 
 function SolusiHukum() {
-  TitleHeader("Halaman Solusi Hukum");
+  TitleHeader(t("layanan3"));
   var user = JSON.parse(localStorage.getItem("userInfo"));
 
 
@@ -48,7 +49,7 @@ function SolusiHukum() {
 
   return (
     <>
-      <TopNewNav title="Komprehensif Solusi Hukum" path={`/dashboard`} />
+      <TopNewNav title={t("layanan3")} path={`/dashboard`} />
       <div className="container-class">
         <div className="responsive-class">
           <div className="res-class">

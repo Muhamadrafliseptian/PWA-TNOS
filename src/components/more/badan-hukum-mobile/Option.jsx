@@ -17,7 +17,7 @@ function OptionMobile() {
   TitleHeader("Halaman pilihan");
   const navigate = useNavigate();
   const [user, setUser] = useState("");
-
+  
   useEffect(() => {
     checkParams();
 

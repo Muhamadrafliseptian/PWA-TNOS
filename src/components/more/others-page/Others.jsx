@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import TopNewNav from "../../moleculars/TopNewNav";
 import "../../../assets/css/allLayanan.css";
+import { t } from "i18next";
 import Gap from "../../moleculars/Gap";
 import LabelComponent from "../../atoms/LabelComponent";
 import InputComponent from "../../atoms/InputComponent";
@@ -19,7 +20,7 @@ import TitleHeader from "../../utils/TitleHeader";
 import InputCheckboxComponent from "../../atoms/InputCheckboxComponent";
 
 function PembayaranLainnya() {
-  TitleHeader("Pembayaran Lainnya");
+  TitleHeader(t("layanan7"));
   var user = JSON.parse(localStorage.getItem("userInfo"));
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     accept: {
@@ -80,7 +81,7 @@ function PembayaranLainnya() {
 
   return (
     <>
-      <TopNewNav title="Pembayaran Lainnya" path={`/dashboard`} />
+      <TopNewNav title={t("layanan7")} path={`/dashboard`} />
       <div className="container-class">
         <div className="responsive-class">
           <div className="res-class">

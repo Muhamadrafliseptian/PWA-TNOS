@@ -76,7 +76,7 @@ function ListPengamananProviderMobile() {
 
   return (
     <>
-      <TopNewNav title="Security Provider" path={`/dashboard`} />
+      <TopNewNav title="Security Provider" />
       <div className="container-class">
         <div className="responsive-class">
           <div className="res-class">
@@ -95,11 +95,11 @@ function ListPengamananProviderMobile() {
                     }}
                   />
                   <span style={{ alignSelf: "center", marginLeft: "24px" }}>
-                    PAS
+                    {t("partner1")}
                   </span>
                 </div>
                 <Button
-                  onClick={() => setDrawerOpen({ open: true, mitra: "PAS" })}
+                  onClick={() => setDrawerOpen({ open: true, mitra: t("partner1") })}
                   style={{ backgroundColor: "#E3E8ED", border: 0 }}
                 >
                   {" "}
@@ -126,12 +126,12 @@ function ListPengamananProviderMobile() {
                     }}
                   />
                   <span style={{ alignSelf: "center", marginLeft: "24px" }}>
-                    TRIGER
+                    {t("partner2")}
                   </span>
                 </div>
                 <Button
                   onClick={() =>
-                    setDrawerOpen({ open: true, mitra: "Trigger" })
+                    setDrawerOpen({ open: true, mitra: t("partner2") })
                   }
                   style={{ backgroundColor: "#E3E8ED", border: 0 }}
                 >
@@ -159,12 +159,12 @@ function ListPengamananProviderMobile() {
                     }}
                   />
                   <span style={{ alignSelf: "center", marginLeft: "24px" }}>
-                    LAINNYA
+                    {t("partner3")}
                   </span>
                 </div>
                 <Button
                   onClick={() =>
-                    setDrawerOpen({ open: true, mitra: "LAINNYA" })
+                    setDrawerOpen({ open: true, mitra: t("partner3") })
                   }
                   style={{ backgroundColor: "#E3E8ED", border: 0 }}
                 >
@@ -216,23 +216,23 @@ function ListPengamananProviderMobile() {
                   >
                     <img
                       src={
-                        drawerOpen?.mitra === "Trigger"
+                        drawerOpen?.mitra === t("partner2")
                           ? PAS
-                          : drawerOpen?.mitra === "PAS"
+                          : drawerOpen?.mitra === t("partner1")
                           ? Trigger
                           : Guard
                       }
                       alt="pas"
                       style={
-                        drawerOpen?.mitra === "LAINNYA" ? { width: "50px" } : {}
+                        drawerOpen?.mitra === t("partner3") ? { width: "50px" } : {}
                       }
                     />
                     <span style={{ fontWeight: 600, marginLeft: "24px" }}>
-                      {drawerOpen?.mitra === "Trigger"
-                        ? "TRIGER"
-                        : drawerOpen?.mitra === "PAS"
-                        ? "PAS"
-                        : "VENDOR LAINNYA"}
+                      {drawerOpen?.mitra === t("partner2")
+                        ? t("partner2")
+                        : drawerOpen?.mitra === t("partner1")
+                        ? t("partner1")
+                        : t("partner3")}
                     </span>
                   </div>
                   <div
@@ -242,7 +242,7 @@ function ListPengamananProviderMobile() {
                       textAlign: "justify",
                     }}
                   >
-                    {drawerOpen?.mitra === "PAS" ? (
+                    {drawerOpen?.mitra === t("partner1") ? (
                       <p style={{ textAlign: "justify" }}>
                         <b>PT. Putra Abadi Sejati (PAS) </b>adalah perusahaan
                         Badan Usaha Jasa Pengamanan (BUJP) hadir untuk memenuhi
@@ -252,7 +252,7 @@ function ListPengamananProviderMobile() {
                         dalam penanganan permasalahan teknologi dan sumber daya
                         manusia.
                       </p>
-                    ) : drawerOpen?.mitra === "LAINNYA" ? (
+                    ) : drawerOpen?.mitra === t("partner3") ? (
                       <p style={{ textAlign: "justify" }}>
                         Silahkan hubungi kontak CRM kami untuk penjelasan lebih
                         lanjut.
@@ -267,7 +267,7 @@ function ListPengamananProviderMobile() {
                         Guard).
                       </p>
                     )}
-                    {drawerOpen?.mitra === "LAINNYA" ? (
+                    {drawerOpen?.mitra === t("partner3") ? (
                       <button
                         style={{
                           padding: "8px 10px",

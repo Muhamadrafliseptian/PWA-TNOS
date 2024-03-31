@@ -82,7 +82,7 @@ function Dashboard() {
                         <div className="card-dashboard-fkf">
                           <img src={lainnya} alt="" style={{ width: "69px" }} />
                         </div>
-                        <div className="title">{t("Pembayaran Lainnya")}</div>
+                        <div className="title">{t("layanan7")}</div>
                       </div>
                     </div>
                   </div>

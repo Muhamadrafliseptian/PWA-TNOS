@@ -1,5 +1,6 @@
 import React from "react";
 import TopNewNav from "../../moleculars/TopNewNav";
+import { t } from "i18next";
 import pt from "../../../assets/images/new pwa icon/badan/pt.svg";
 import cv from "../../../assets/images/new pwa icon/badan/cv.svg";
 import yayasan from "../../../assets/images/new pwa icon/badan/yayasan.svg";
@@ -10,11 +11,11 @@ import { useNavigate } from "react-router-dom";
 import TitleHeader from "../../utils/TitleHeader";
 
 function Option() {
-  TitleHeader("Halaman pilihan");
+  TitleHeader(t("layanan1"));
   const navigate = useNavigate();
   return (
     <>
-      <TopNewNav title="Pembuatan Legalitas Usaha" path={`/dashboard`} />
+      <TopNewNav title={t("layanan1")} path={`/dashboard`} />
       <div className="container-class">
         <div className="responsive-class">
           <div className="res-class">
