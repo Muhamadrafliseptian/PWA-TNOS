@@ -8,6 +8,7 @@
   "layanan4": "Video Call Legal Consultation",
   "layanan5": "Legal Assistance",
   "layanan6": "Personal Guard",
+  "layanan7": "Other Payments",
 
   "sublayanan1": "Legal Entity PT",
   "sublayanan2": "Business Entity CV",
@@ -80,5 +81,11 @@
   "guard4": "Order Duration",
   "guard5": "Number of Guards",
   "guard6": "Location Details",
-  "guard7": "Continue Payment"
+  "guard7": "Continue Payment",
+
+  "partner1": "PAS",
+  "partner2": "TRIGGER",
+  "partner3": "Other Vendors",
+
+  "ID_ENG_PEMBAYARAN_LAINNYA": "Pembayaran Lainnya"
 }
