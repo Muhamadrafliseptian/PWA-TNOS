@@ -782,6 +782,7 @@ function ContentDetailCheckout({ layanan, data }) {
               />
             </div>
             <Gap height={15} />
+            
             <div>
               <CheckoutHeader
                 image={users}
