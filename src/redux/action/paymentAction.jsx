@@ -594,7 +594,7 @@ const badanHukumCreate =
         navigate(`${urlNavigate}${response?.data?.detail?.id}`);
       })
       .catch((error) => {
-        // console.log(error);
+        console.log(error);
         showMessage(error?.response?.data?.message, "error");
         dispatch(setLoading(false));
       });
@@ -641,7 +641,8 @@ const paymentBadanHukum = async (data) => (dispatch) => {
   axios
     .post(`${API_HOST.url}/badan-hukum/in-payment`, data)
     .then((response) => {
-      window.location = `https://checkout-staging.xendit.co/web/${response?.data?.order?.invoice_id}`
+
+      window.location = `${process.env.REACT_APP_API_INVOICE_URL}${response?.data?.order?.invoice_id}`
       // window.location = `${response?.data?.checkout_staging?.invoice_url}`
       // window.location = `${process.env.REACT_APP_PAYMENT}${data.invoice_id}/${data.amount}`;
       // dispatch(setLoading(false));
