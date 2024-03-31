@@ -576,11 +576,19 @@ function AppRoutes() {
       />
       <Route
         path="/pengamanan-korporat-m"
-        element={<MorePengamananKorporatMobile />}
+        element={
+          <ProtectedRoute>
+            <ListPengamananProviderMobile/>
+          </ProtectedRoute>
+        }
       />
       <Route
         path="/pengamanan-korporat-m/checkout/:id"
-        element={<MoreDetailPengamananKorporatMobile />}
+        element={
+          <ProtectedRoute>
+            <MoreDetailPengamananKorporatMobile />
+          </ProtectedRoute>
+        }
       />
       <Route
         path="/comprehensive-Legal-solutions"
