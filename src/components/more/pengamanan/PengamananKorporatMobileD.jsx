@@ -501,14 +501,14 @@ function PengamananKorporatMobileD() {
 
   return (
     <>
-      <TopNewNav
+      {/* <TopNewNav
         title={t("Pengamanan Usaha & Bisnis")}
         path={`/services-list/${searchParams.mitra}`}
-      />
+      /> */}
       <div className="container-class">
         <div className="responsive-class">
           <div className="res-class">
-            <div className="payment-container">
+            <div className="payment-container" style={{marginTop: '0px'}}>
               <div className="payment-content">
                 <div className="container-layanan-f">
                   <div

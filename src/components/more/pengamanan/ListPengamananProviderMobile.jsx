@@ -80,7 +80,7 @@ function ListPengamananProviderMobile() {
       <div className="container-class">
         <div className="responsive-class">
           <div className="res-class">
-            <div className="flexcol">
+            <div className="flexcol" style={{margin: '20px 12px 24px 12px'}}>
               <div className="flexbox">
                 <div style={{ display: "flex", flexDirection: "row" }}>
                   <img

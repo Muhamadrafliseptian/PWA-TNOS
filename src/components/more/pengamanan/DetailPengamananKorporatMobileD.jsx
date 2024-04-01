@@ -153,13 +153,13 @@ function DetailPengamananKorporatMobileD() {
   };
   return (
     <>
-      <TopNewNav title="Ringkasan Pengamanan Usaha dan Bisnis" path={`/corporate-security-m/${storeData?.detail_data_layanan?.type === "PAS" ? "PAS" : "Trigger"}`} />
+      {/* <TopNewNav title="Ringkasan Pengamanan Usaha dan Bisnis" path={`/corporate-security-m/${storeData?.detail_data_layanan?.type === "PAS" ? "PAS" : "Trigger"}`} /> */}
       <div className="container-class">
         <div className="responsive-class">
           <div className="res-class">
             <div
               className="dashboard-container-f"
-              style={{ marginTop: "60px" }}
+              style={{ marginTop: "0px" }}
             >
               {/* <div className="container-ketentuan-f">
                 <p>
