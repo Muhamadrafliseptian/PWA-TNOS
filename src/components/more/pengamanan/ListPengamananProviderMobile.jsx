@@ -76,7 +76,7 @@ function ListPengamananProviderMobile() {
 
   return (
     <>
-      <TopNewNav title="Security Provider" />
+      {/* <TopNewNav title="Security Provider" /> */}
       <div className="container-class">
         <div className="responsive-class">
           <div className="res-class">

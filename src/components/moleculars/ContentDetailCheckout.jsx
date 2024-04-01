@@ -16,6 +16,9 @@ var CryptoJS = require("crypto-js");
 const secretKey = `${process.env.REACT_APP_SECRET_KEY}`;
 
 function ContentDetailCheckout({ layanan, data }) {
+
+  console.log(data);
+
   const params = useParams();
   
   const [getP, setP] = useState(null);
@@ -920,7 +923,7 @@ function ContentDetailCheckout({ layanan, data }) {
                       value={converterDate(moment(data?.expiry_date))}
                     />
                   )}
-              {data?.type === "PAS" ? (
+              {data?.tnos_subservice_id === "1" && data?.tnos_service_id === "4" ? (
                 <div></div>
               ) : (
                 <>
